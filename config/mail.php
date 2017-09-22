@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'postmaster@mg.studentswatch.com', 'name' => 'StudentsWatch'],
+    'from' => ['address' => 'postmaster@sandboxdd1c1c24fb964964a03135e3d56d2165.mailgun.org', 'name' => 'StudentsWatch'],
 
     /*
     |--------------------------------------------------------------------------
