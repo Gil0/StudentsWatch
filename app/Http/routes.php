@@ -18,3 +18,12 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/configuracion/{id}','HomeController@informacionCuenta');
+Route::post('/configuracion/{id}/guardarCambios','HomeController@guardarCambios');
+
+//Administrador
+Route::get('Admin/Home', function(){
+	return view('/Admin/AdminHome');
+});
+
+Route::get('/Admin/Profesores',  ['middleware' => 'administrador', 'uses' => 'AdministradorController@profesores']);
