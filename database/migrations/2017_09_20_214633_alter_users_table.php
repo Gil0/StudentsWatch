@@ -15,7 +15,7 @@ class AlterUsersTable extends Migration
         Schema::table('users', function(Blueprint $table)
         {
             $table->integer('matricula')->unique();
-            $table->binary('imagen')->nullable();
+            $table->string('imagen',100)->nullable();
 			$table->boolean('is_admin')->default(false);
             $table->boolean('is_profesor');
         });

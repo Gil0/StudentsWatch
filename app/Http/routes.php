@@ -20,6 +20,7 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/configuracion/{id}','HomeController@informacionCuenta');
 Route::post('/configuracion/{id}/guardarCambios','HomeController@guardarCambios');
+Route::post('/configuracion/{id}/guardarImagen','HomeController@guardarImagen');
 
 //Administrador
 Route::get('Admin/Home', function(){
