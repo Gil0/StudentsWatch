@@ -15,7 +15,7 @@
                             <div class="col-md-6">
                                 <select class="form-control" name="is_profesor" id="is_profesor" value="{{ old('is_profesor') }}">
                                     <option selected="selected" value="0">Alumno</option>
-                                    <option value="1">Profesor</option>                                    
+                                    <option value="1">Trabajador</option>                                    
                                 </select>                                
                             </div>
                         </div>
