@@ -18,6 +18,7 @@ class AlterUsersTable extends Migration
             $table->string('imagen',100)->nullable();
 			$table->boolean('is_admin')->default(false);
             $table->boolean('is_profesor');
+            $table->boolean('is_tutor')->default(false);
         });
     }
     /**

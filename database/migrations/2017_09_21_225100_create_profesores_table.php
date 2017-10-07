@@ -16,9 +16,10 @@ class CreateProfesoresTable extends Migration
         Schema::create('profesores', function(Blueprint $table){
             $table->increments('idProfesor');               
             $table->string('cubiculo')->nullable();            
-            $table->float('calificacion')->default(0);
-            $table->boolean('is_tutor')->default(false);
-            $table->timestamps();
+            $table->float('calificacion')->default(0);            
+            $table->string('descripcion',300);
+            $table->string('hobbies',150);
+            $table->timestamps();                        
             $table->rememberToken();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
