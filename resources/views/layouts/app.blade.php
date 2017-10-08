@@ -7,7 +7,8 @@
     <title>Laravel</title>
 
     <!-- Font Awesome -->    
-    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="{{ asset('../assets/css/font-awesome.min.css') }}">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
@@ -15,7 +16,6 @@
     <!-- Styles -->    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <style>
         body {
             font-family: 'Lato';
@@ -62,8 +62,12 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                                     @if (Auth::user()->is_admin == true)
-                                        @if (Auth::user()->is_profesor == true)
-                                            [Administrador][Profesor]                                            
+                                        @if (Auth::user()->is_profesor == true)                                                                                        
+                                            @if (Auth::user()->is_tutor == true)
+                                            [Administrador][Profesor][Tutor]
+                                            @else
+                                            [Administrador][Profesor]
+                                            @endif                                        
                                         @else
                                             [Administrador]                                              
                                         @endif                                        
@@ -72,21 +76,16 @@
                                             @if (Auth::user()->is_tutor == true)
                                                 [Tutor]                                                
                                             @else
-                                                [Profesor]                                                
+                                                [Profesor]                                                                                              
                                             @endif
                                         @else
                                             [Alumno]                                                
                                         @endif                                        
                                     @endif                                    
-                            </a>
-                           
-                                <ul class="dropdown-menu" role="menu">
+                            </a>                           
+                                <ul class="dropdown-menu" role="menu">                                
+                                <li value="{{Auth::user()->id}}" class="configuracion"><a href="{{ url('/configuracion/'.encrypt(Auth::user()->id)) }}"><i class="fa fa-btn fa-cog"></i>Configuración</a></li>                                                                                                
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Cerrar Sesión</a></li>
-                                
-                                <li value="{{Auth::user()->id}}" class="configuracion"><a href="{{ url('/configuracion/'.encrypt(Auth::user()->id)) }}"><i class="fa fa-btn fa-cog"></i>Configuración</a></li>
-                                
-                                
-                                
                             </ul>
                         </li>
                     @endif
@@ -100,10 +99,6 @@
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
-</body>
-    <!-- Bootstrap js Files-->    
-    <script src="{{ asset('../assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('../assets/js/bootstrap.js') }}"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>    
+    </body>    
 </html>
