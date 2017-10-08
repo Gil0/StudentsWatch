@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -65,12 +66,26 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $CrearUsuario = User::create([
             'name' => $data['name'],
             'matricula' => $data['matricula'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'is_profesor' => $data['is_profesor'],
         ]);
+        /**
+        * Modificacion de Registro de usuario.
+        *
+        * Cuando un Profesor se registra, se liga de manera automatica a la tabla
+        * Profesores
+        */
+        if($data['is_profesor']==1){
+            $ID = $CrearUsuario->id;
+            DB::table('profesores')->insert([          
+                'user_id' => $ID,
+            ]);
+        }
+
+        return $CrearUsuario;
     }
 }
