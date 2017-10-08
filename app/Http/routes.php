@@ -17,12 +17,39 @@ Route::get('/', function () {
 
 Route::auth();
 
+
+/*
+|--------------------------------------------------------------------------
+| Rutas de Configuración
+|--------------------------------------------------------------------------
+|
+| Aqui se encuentran las rutas que redireccionan a la configuracion de cuenta
+| de todos los niveles de usuario.
+|
+*/
 Route::get('/home', 'HomeController@index');
 Route::get('/configuracion/{id}','HomeController@informacionCuenta');
 Route::post('/configuracion/{id}/guardarCambios','HomeController@guardarCambios');
 Route::post('/configuracion/{id}/guardarImagen','HomeController@guardarImagen');
 
-//Administrador
+/*
+|--------------------------------------------------------------------------
+| Rutas de Profesores
+|--------------------------------------------------------------------------
+|
+| Aqui se encuentran las rutas a las funcionalidades de profesores.
+|
+*/
+Route::get('/Profesor/Informacion/{id}',  ['middleware' => 'profesor', 'uses' => 'ProfesorController@miInformacion']);
+Route::post('/Profesor/Informacion/{id}/guardarInformacionPersonal', ['middleware' => 'profesor', 'uses' => 'ProfesorController@guardarInformacionPersonal']);
+/*
+|--------------------------------------------------------------------------
+| Rutas de Administradores
+|--------------------------------------------------------------------------
+|
+| Aqui se encuentran las rutas a las funcionalidades de administrador.
+|
+*/
 Route::get('Admin/Home', function(){
 	return view('/Admin/AdminHome');
 });
