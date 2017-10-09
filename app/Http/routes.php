@@ -42,6 +42,10 @@ Route::post('/configuracion/{id}/guardarImagen','HomeController@guardarImagen');
 */
 Route::get('/Profesor/Informacion/{id}',  ['middleware' => 'profesor', 'uses' => 'ProfesorController@miInformacion']);
 Route::post('/Profesor/Informacion/{id}/guardarInformacionPersonal', ['middleware' => 'profesor', 'uses' => 'ProfesorController@guardarInformacionPersonal']);
+Route::post('/Profesor/Informacion/academica/crear',['middleware' => 'profesor', 'uses' => 'ProfesorController@informacionAcademica']);
+Route::post('/Profesor/Informacion/laboral/crear',['middleware' => 'profesor', 'uses' => 'ProfesorController@informacionLaboral']);
+Route::post('/Profesor/Informacion/academica/{id}/eliminar',['middleware' => 'profesor', 'uses' => 'ProfesorController@eliminarInformacionAcademica']);
+Route::post('/Profesor/Informacion/laboral/{id}/eliminar', ['middleware' => 'profesor', 'uses' => 'ProfesorController@eliminarInformacionLaboral']);
 /*
 |--------------------------------------------------------------------------
 | Rutas de Administradores

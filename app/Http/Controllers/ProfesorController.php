@@ -27,9 +27,8 @@ class ProfesorController extends Controller
     public function miInformacion(Request $request,$id){   
         $ID=Crypt::decrypt($id);          
         $informacionProfesor = DB::table('profesores')->where('user_id',$ID)->first();              
-        $academica = DB::table('formacionAcademica')->select('*')->where('idProfesor',$ID)->get();
-        $laboral = DB::table('informacionLaboral')->select('*')->where('idProfesor',$ID)->get();
-
+        $academica = DB::table('formacionAcademica')->select('*')->where('idProfesor',$informacionProfesor->idProfesor)->get();
+        $laboral = DB::table('informacionLaboral')->select('*')->where('idProfesor',$informacionProfesor->idProfesor)->get();        
         return view('/Profesor/Informacion')->with('informacionProfesor',$informacionProfesor)->with( 'academica',$academica)->with('laboral',$laboral);                  
     }
     public function guardarInformacionPersonal(Request $request, $id)
@@ -42,5 +41,36 @@ class ProfesorController extends Controller
         $informacionProfesor = DB::table('profesores')->where('user_id',$ID)->first();                  
         return redirect()->action('ProfesorController@miInformacion',['id'=>$id]);
     }  
-    
+    public function informacionAcademica(Request $request){
+        DB::table('formacionAcademica')->insert([
+             'escuela' => $request->escuela,
+             'estudios' => $request->estudios,
+             'periodo' =>$request->periodo,
+             'idProfesor' =>$request->idProfesor
+         ]);
+         $ID=Crypt::encrypt($request->id);
+         return redirect()->action('ProfesorController@miInformacion',['id'=>$ID]);
+     }     
+     public function informacionLaboral(Request $request){
+        DB::table('informacionLaboral')->insert([
+             'lugar_trabajo' => $request->lugar_trabajo,
+             'puesto' => $request->puesto,
+             'periodo' =>$request->periodo,
+             'idProfesor' =>$request->idProfesor
+         ]);
+         $ID=Crypt::encrypt($request->id);
+         return redirect()->action('ProfesorController@miInformacion',['id'=>$ID]);
+     }
+    public function eliminarInformacionAcademica(Request $request, $id){      
+        DB::table('formacionAcademica')->where('idFormacionAcademica', $id)->delete();
+        $usuario = DB::table('profesores')->where('idProfesor',$request->idProfesor)->first();
+        $ID=Crypt::encrypt($usuario->user_id);
+        return redirect()->action('ProfesorController@miInformacion',['id'=>$ID]);
+    }
+    public function eliminarInformacionLaboral(Request $request, $id){          
+        DB::table('informacionLaboral')->where('idInformacionLaboral', $id)->delete();
+        $usuario = DB::table('profesores')->where('idProfesor',$request->idProfesor)->first();
+        $ID=Crypt::encrypt($usuario->user_id);
+        return redirect()->action('ProfesorController@miInformacion',['id'=>$ID]);
+    }
 }

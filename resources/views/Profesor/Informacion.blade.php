@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <meta name="csrf_token" content="{{ csrf_token() }}" /> <!--Se necestia este metadato para poder hacer AJAX, se envia el csrf_token al server para validar que si existe la sesion -->
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <style>
 IMG.calificacionProfesor{
   display: block;
@@ -86,7 +87,7 @@ p {
     <div class="navar">
         <ul class="nav nav-pills"> 
             <li><a href="{{ url('/login') }}">Inicio</a></li>
-            <li><a href="{{ url('/Profesor/Informacion') }}">Mi Informacion</a></li>
+            <li><a href="{{ url('/Profesor/Informacion/'.encrypt(Auth::user()->id)) }}">Mi Informacion</a></li>
             <li><a href="{{ url('/login') }}">Mis Comentarios</a></li>                                                
         </ul>
     </div>
@@ -188,33 +189,33 @@ p {
                             <div class="panel-body">
                                 <table class="table table-striped">
                                     <thread>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Lugar de Trabajo</th>
-                                        <th>Puesto</th>
+                                    <tr>                                        
+                                        <th>Escuela</th>
+                                        <th>Estudios</th>
                                         <th>Periodo</th>
                                         <th></th>
-                                        <th></th>
+                                        <th>Eliminar</th>
+                                        <th></th>                                        
                                     </tr>
                                     </thread>
                                     <tbody>
                                     <tbody>
-                                    @if($laboral)
-                                    @foreach($laboral as $laboral)
-                                            <tr>
-                                                <th scope="row">{{$laboral->idInformacionLaboral}}</th>
-                                                <th>{{$laboral->lugar_trabajo}}</th>
-                                                <th>{{$laboral->puesto}}</th>
-                                                <th>{{$laboral->periodo}}</th>
-                                            
-                                                <th><i class="fa fa-trash fa-2x icondelete" id="EliminarLab" aria-hidden="true" value="{{$laboral->idProfesor}}"></i></th>
+                                    @if($academica)
+                                        @foreach($academica as $academica)
+                                            <tr>                                                
+                                                <th>{{$academica->escuela}}</th>
+                                                <th>{{$academica->estudios}}</th>
+                                                <th>{{$academica->periodo}}</th>                                            
+                                                <th></th>
+                                                <th><button><i class="fa fa-trash fa-2x icondelete" id="EliminarAcademica" aria-hidden="true" value="{{$academica->idFormacionAcademica}}"></i></button></th>
+                                                <th></th>
                                             </tr>
-                                    @endforeach
+                                        @endforeach
                                     @endif
                                     </tbody>
                                 </table>
                                 <div class="panel-heading">
-                                    <button class="btn btn-success" style="width:100%;" data-toggle="modal" data-target="#nuevaInformacionAcademica">Nueva Informacion Laboral</button>
+                                    <button class="btn btn-success" style="width:100%;" data-toggle="modal" data-target="#nuevaInformacionAcademica">Nueva Informacion Académica</button>
                                 </div>                           
                             </div>                                                         
                         </div>
@@ -227,7 +228,36 @@ p {
                     <div class="panel-body">                    
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <h1>HOOOOOLA</h2>
+                                <table class="table table-striped">
+                                    <thread>
+                                    <tr>                                        
+                                        <th>Lugar de Trabajo</th>
+                                        <th>Puesto</th>
+                                        <th>Durante</th>
+                                        <th></th>
+                                        <th>Eliminar</th>
+                                        <th></th>                                        
+                                    </tr>
+                                    </thread>
+                                    <tbody>
+                                    <tbody>
+                                    @if($laboral)
+                                        @foreach($laboral as $laboral)
+                                            <tr>                                                
+                                                <th>{{$laboral->lugar_trabajo}}</th>
+                                                <th>{{$laboral->puesto}}</th>
+                                                <th>{{$laboral->periodo}}</th>                                            
+                                                <th></th>
+                                                <th><i class="fa fa-trash fa-2x icondelete" id="EliminarLaboral" aria-hidden="true" value="{{$laboral->idInformacionLaboral}}"></i></th>
+                                                <th></th>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                    </tbody>
+                                </table>
+                                <div class="panel-heading">
+                                    <button class="btn btn-success" style="width:100%;" data-toggle="modal" data-target="#nuevaInformacionLaboral">Nueva Informacion Laboral</button>
+                                </div>  
                             </div>
                         </div>
                     </div>
@@ -235,34 +265,108 @@ p {
             </div>
     </div>
 </div>
-
-<div class="modal fade" id="nuevaInformacionAcademica" tabindex="-1" role="dialog" aria-labelledby="Nueva Informacion Academica">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Nueva Informacion Academica</h4>
-                  </div>
-                  <form action="/admin/profesor/infoAcademica/crear" method="POST">
-                  {{ csrf_field() }} <!-- ESTE TOKEN ES IMPORTANTE PARA PODER ENVIAR DATOS AL SERVER... si no lo incluyes habra error ya que la informacion no es "confiable" -->
-                    <div class="modal-body">
-                        <input type="text" class="form-control" placeholder="Escuela" name="escuela" required><br>
-                        <input type="text" class="form-control" placeholder="Estudios" name="estudios" required><br>
-                        <input type="text" class="form-control" placeholder="Periodo" name="periodo" required><br>
-                        <input type="hidden" value="{{$informacionProfesor->idProfesor}}" name="idProfesor">
+<!--Modal de Informacion Academica-->
+            <div class="modal fade" id="nuevaInformacionAcademica" tabindex="-1" role="dialog" aria-labelledby="Nueva Informacion Academica">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Nueva Informacion Academica</h4>
+                        </div>
+                            <form action="/Profesor/Informacion/academica/crear" method="POST">
+                            {{ csrf_field() }} <!-- ESTE TOKEN ES IMPORTANTE PARA PODER ENVIAR DATOS AL SERVER... si no lo incluyes habra error ya que la informacion no es "confiable" -->
+                                <div class="modal-body">
+                                    <input type="text" class="form-control" placeholder="Escuela" name="escuela" required><br>
+                                    <input type="text" class="form-control" placeholder="Estudios" name="estudios" required><br>
+                                    <input type="text" class="form-control" placeholder="Periodo" name="periodo" required><br>
+                                    <input type="hidden" value="{{$informacionProfesor->idProfesor}}" name="idProfesor">
+                                    <input type="hidden" value="{{$informacionProfesor->user_id}}" name="id">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="cancelar">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary" id="crearInfoAcademica">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" id="cancelar">Cerrar</button>
-                        <button type="submit" class="btn btn-primary" id="crearInfoAcademica">Guardar</button>
-                    </div>
-                  </form>
                 </div>
-              </div>
+<!--Modal de Informacion Laboral-->
+        <div class="modal fade" id="nuevaInformacionLaboral" tabindex="-1" role="dialog" aria-labelledby="Nueva Informacion Laboral">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Nueva Informacion Laboral</h4>
+                </div>
+                <form action="/Profesor/Informacion/laboral/crear" method="POST">
+                {{ csrf_field() }} <!-- ESTE TOKEN ES IMPORTANTE PARA PODER ENVIAR DATOS AL SERVER... si no lo incluyes habra error ya que la informacion no es "confiable" -->
+                <div class="modal-body">
+                    <input type="text" class="form-control" placeholder="Lugar de trabajo" name="lugar_trabajo" required><br>
+                    <input type="text" class="form-control" placeholder="Puesto" name="puesto" required><br>
+                    <input type="text" class="form-control" placeholder="Periodo" name="periodo" required><br>
+                    <input type="hidden" value="{{$informacionProfesor->idProfesor}}" name="idProfesor">
+                    <input type="hidden" value="{{$informacionProfesor->user_id}}" name="id">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="cancelar">Cerrar</button>
+                    <button type="submit" class="btn btn-primary" id="crearInfoLaboral">Guardar</button>
+                </div>
+                </form>
             </div>
-          </div>
+            </div>
+        </div>                
+            </div>            
         </div>
       </div>
   </div>
-     
+<!--Eliminar informacion Academica-->
+<div class="modal fade" id="eliminarInfoAcademicaModal" tabindex="-1" role="dialog" aria-labelledby="Eliminar Informacion Academica">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+           <p class="lead" style="text-align:center;">¿Estas seguro de eliminar ésta información?</p>
+      </div>
+      <div class="modal-footer">
+        <form method="POST" action="" id="eliminarInfoAcademica">
+            {{ csrf_field() }}
+            <input type="hidden" value="{{$informacionProfesor->idProfesor}}" name="idProfesor">
+            <button type="submit" class="btn btn-danger" style="width:100%;">SI</button>
+        </form>
+        <button type="button" class="btn btn-default" style="width:100%;" data-dismiss="modal">NO</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Eliminar informacion Academica-->
+<div class="modal fade" id="eliminarInfoLaboralModal" tabindex="-1" role="dialog" aria-labelledby="Eliminar Informacion Laboral">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+           <p class="lead" style="text-align:center;">¿Estas seguro de eliminar ésta información?</p>
+      </div>
+      <div class="modal-footer">
+        <form method="POST" action="" id="eliminarInfoLaboral">
+            {{ csrf_field() }}
+            <input type="hidden" value="{{$informacionProfesor->idProfesor}}" name="idProfesor">
+            <button type="submit" class="btn btn-danger" style="width:100%;">SI</button>
+        </form>
+        <button type="button" class="btn btn-default" style="width:100%;" data-dismiss="modal">NO</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+         $('i#EliminarAcademica').click(function(){       
+           $('#eliminarInfoAcademicaModal').modal('show');
+           $('form#eliminarInfoAcademica').attr('action','/Profesor/Informacion/academica/'+$(this).attr('value')+'/eliminar');
+         });
+         $('i#EliminarLaboral').click(function(){
+           $('#eliminarInfoLaboralModal').modal('show');
+           $('form#eliminarInfoLaboral').attr('action','/Profesor/Informacion/laboral/'+$(this).attr('value')+'/eliminar');
+         });
+    });
+</script>     
 @endsection
 
