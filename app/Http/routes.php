@@ -31,7 +31,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/configuracion/{id}','HomeController@informacionCuenta');
 Route::post('/configuracion/{id}/guardarCambios','HomeController@guardarCambios');
 Route::post('/configuracion/{id}/guardarImagen','HomeController@guardarImagen');
-
+Route::post('/configuracion/{id}/actualizarContraseña','HomeController@actualizaContraseña');
+Route::post('configuracion/{id}/updatepassword', 'userController@updatePassword');
 /*
 |--------------------------------------------------------------------------
 | Rutas de Profesores

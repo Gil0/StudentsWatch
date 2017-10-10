@@ -129,6 +129,68 @@ IMG.imagenUsuario{
             </div>
         </div>        
     </div>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="text-align:center;">Cambiar Contraseña</div>
+                    
+            
+                    <div class="panel-body">
+                     <form  class="form-horizontal" method="post"  action="{{ url('/configuracion/'.encrypt($info->id).'/updatepassword') }}">
+                            {{csrf_field()}}
+                       
+                            <div class="form-group">
+                                <label for="mypassword" class="col-sm-2 control-label">Contraseña Actual</label>
+                             <div class="col-sm-10">
+                                 <input type="password"  name="mypassword" class="form-control" >
+                             </div>
+                             @if (Session::has('message'))
+                        <div class="text-danger">
+                            {{Session::get('message')}}
+                        </div>
+                    @endif
+                              <div class="text-danger" align="center">{{$errors->first('mypassword')}}</div>
+                            </div>
+                            
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">Nueva Contraseña</label>
+                            <div class="col-sm-10">
+                            <input type="password" class="form-control" name="password">
+                            </div>
+                            <div class="text-danger" align="center">{{$errors->first('password')}}</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mypassword" class="col-sm-2 control-label">Repetir Contraseña</label>
+                            <div class="col-sm-10">
+                            <input type="password" class="form-control" name="password_confirmation">
+                            </div>
+                        </div> 
+                     
+                        <div class="form-group">
+                        <div class="col-sm-10 col-md-offset-2">
+                            <button type="submit" class="btn btn-primary form-control">Cambiar mi contraseña</button>
+                          </form>
+                          @if (Session::has('status'))
+                          <div class="alert alert-success">
+                            <strong>{{Session::get('status')}}</strong>
+                        </div>
+                        </div>      
+                        
+                    @endif
+                        
+
+                    </div> 
+                </div>         
+            </div>
+         
+        </div>
+    </div>
+    </div>
+</div>
+
+
 </div>
 <script>
 $(function() {
