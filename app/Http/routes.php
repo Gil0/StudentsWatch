@@ -35,12 +35,15 @@ Route::post('/configuracion/{id}/actualizarContraseña','HomeController@actualiz
 Route::post('configuracion/{id}/updatepassword', 'userController@updatePassword');
 /*
 |--------------------------------------------------------------------------
-| Rutas de Profesores
-|--------------------------------------------------------------------------
-|
-| Aqui se encuentran las rutas a las funcionalidades de profesores.
-|
-*/
+| Rutas de Profesores*/
+Route::get('Usuario/Profesores', function(){
+    return view('/Usuario/Profesores');
+});
+
+Route::get('/Usuario/Profesores',  ['middleware', 'uses' => 'UserController@profesores']);
+//| Aqui se encuentran las rutas a las funcionalidades de profesores.
+
+
 Route::get('/Profesor/Informacion/{id}',  ['middleware' => 'profesor', 'uses' => 'ProfesorController@miInformacion']);
 Route::post('/Profesor/Informacion/{id}/guardarInformacionPersonal', ['middleware' => 'profesor', 'uses' => 'ProfesorController@guardarInformacionPersonal']);
 Route::post('/Profesor/Informacion/academica/crear',['middleware' => 'profesor', 'uses' => 'ProfesorController@informacionAcademica']);

@@ -73,4 +73,16 @@ class ProfesorController extends Controller
         $ID=Crypt::encrypt($usuario->user_id);
         return redirect()->action('ProfesorController@miInformacion',['id'=>$ID]);
     }
+
+
+    public function profesores()
+    {
+    $profesores=DB::table('users')
+    ->join('users', 'users.id' , '=' ,'profesores.user_d')
+    ->select('users.name', 'profesores.email', 'profesores.idProfesor', 'profesores.descripcion')
+    ->where('is_profesor',1);
+    return view('/Usuario/profesores')->with('profesores',$profesores);
+
+    }
+
 }

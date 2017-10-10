@@ -134,7 +134,7 @@
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
                     <li><a href="{{ url('/login') }}">Mi Mapa Curricular</a></li>
                     <li><a href="{{ url('/login') }}">Mi Progreso</a></li>
-                    <li><a href="{{ url('/login') }}">Ver Profesores</a></li>
+                    <li><a href="{{ url('/Usuario/Profesores') }}">Ver Profesores</a></li>
                     <li><a href="{{ url('/login') }}">Ver Comentarios</a></li>
                  </ul>
             </div>

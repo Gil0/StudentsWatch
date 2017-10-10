@@ -50,7 +50,15 @@ class userController extends Controller
                 return redirect()->action('HomeController@informacionCuenta',['id'=>$id])->with('message', 'Contraseña incorrecta');
             }
         }
-    }
 
+    }
+    public function profesores(){
+  $profesores=DB::table('users')
+            ->join('profesores', 'profesores.user_id' , '=' ,'users.id')
+            ->select( 'profesores.idProfesor', 'users.name', 'users.email')
+            ->get();
+            //dd($profesores);
+            return view('/Usuario/Profesores')->with('profesores',$profesores);
+    }
 
 }
