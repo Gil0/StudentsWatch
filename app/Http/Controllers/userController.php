@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Crypt;
 
 class userController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function password(){
         return View('welcome');
     }
