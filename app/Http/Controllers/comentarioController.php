@@ -27,7 +27,7 @@ class comentarioController extends Controller
     {
         DB::table('comentarios')->where('idComentario',$id)->delete();
 
-         return redirect()->action('AdminController@comentarios');
+         return redirect()->action('AdministradorController@comentarios');
     }
 
 
