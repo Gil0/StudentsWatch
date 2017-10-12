@@ -32,7 +32,7 @@ Route::get('/configuracion/{id}','HomeController@informacionCuenta');
 Route::post('/configuracion/{id}/guardarCambios','HomeController@guardarCambios');
 Route::post('/configuracion/{id}/guardarImagen','HomeController@guardarImagen');
 Route::post('/configuracion/{id}/actualizarContraseña','HomeController@actualizaContraseña');
-Route::post('configuracion/{id}/updatepassword', 'userController@updatePassword');
+Route::post('configuracion/{id}/updatepassword', 'UserController@updatePassword');
 /*
 |--------------------------------------------------------------------------
 | Rutas de Profesores*/
