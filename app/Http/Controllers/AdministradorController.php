@@ -31,7 +31,7 @@ class AdministradorController extends Controller
     public function cambiarStatus(Request $request, $id)
     {
         $evento = DB::table('comentarios')->where('idComentario',$id)->update(['status' => $request->status]);
-        return json_encode('ok');
+        return json_encode('Se actualizó el status correctamente');
     }
 
     public function comentarios(){
