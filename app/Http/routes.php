@@ -40,6 +40,7 @@ Route::post('configuracion/{id}/updatepassword', 'UserController@updatePassword'
 Route::get('/Usuario/Profesores',  ['middleware' => 'auth', 'uses' => 'UserController@profesores']);
 Route::post('/user/comentario/crear/{id}',  ['middleware' => 'auth', 'uses' => 'UserController@crearComentario']);
 Route::get('/Usuario/Comentarios/{id}/ver',['middleware' => 'auth', 'uses' => 'comentarioController@verProfesor']);
+Route::get('/Usuario/Profesores/{id}/Ver',  ['middleware' => 'auth', 'uses' => 'UserController@verProfesor']);
 //| Aqui se encuentran las rutas a las funcionalidades de profesores.
 
 

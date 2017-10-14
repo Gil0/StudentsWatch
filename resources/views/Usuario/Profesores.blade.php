@@ -244,8 +244,9 @@
 <script>
     $(document).ready(function(){               
         $('i.fa-plus-circle').click(function(){
-            window.location.href = '/User/Profesores/'+$(this).attr('value')+'/Ver';
+            window.location.href = '/Usuario/Profesores/'+$(this).attr('value')+'/Ver';
          } );
+         
         $('i.fa-pencil-square').click(function(){
            window.location.href = '/Usuario/Comentarios/'+$(this).attr('value')+'/ver';
         });

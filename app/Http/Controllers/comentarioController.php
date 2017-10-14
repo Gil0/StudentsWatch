@@ -40,7 +40,7 @@ class comentarioController extends Controller
         $profesor= DB::table('profesores')->select('*')->where('idProfesor', $id)->first();
        $comentarios=DB::table('comentarios')->select('*')->where('idProfesor',$id)->where('status',1)->get();
         
-        return view('/Usuario/verProfesor')->with('profesores',$profesor)->with('comentarios',$comentarios);      
+        return view('/Usuario/comentarios')->with('profesores',$profesor)->with('comentarios',$comentarios);      
 
     }
 
