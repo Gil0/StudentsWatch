@@ -47,4 +47,10 @@ class AdministradorController extends Controller
          return redirect()->action('AdministradorController@profesores');
     }
 
+    public function hacerTutor(Request $request, $id)
+    {
+        $evento = DB::table('users')->where('id',$id)->update(['is_tutor' => $request->is_tutor,]);
+        return json_encode('Se actualizó el status ');
+    }
+
 }

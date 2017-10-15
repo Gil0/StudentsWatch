@@ -5,13 +5,13 @@
       color: green;
     }
     i.fa-info-circle:hover{
-        color:orange;
+        color:#47d147;
     }
     i.fa-commenting{
       color: #0080ff;
     }
     i.fa-commenting:hover{
-        color:#735CD1;
+        color:#0039e6;
     }
     i.fa-trash{
       color: #d9534f;
@@ -48,7 +48,8 @@
                         <div class="panel-body">
                             <table class="table table-hover">
                                 <thread>
-                                    <tr>
+                                    <tr class="rowsTabla">
+                                       <!-- <th>id</th> -->
                                         <th>Nombre</th>
                                         <th>Matricula</th>
                                         <th>Ver Información</th>
@@ -60,12 +61,13 @@
                                 <tbody>
                                     @foreach($profesores as $profesores)
                                     <tr>
-                                        <th>{{$profesores->name}}</th>
-                                        <th>{{$profesores->matricula}}</th>
-                                        <th><i class="fa fa-info-circle fa-2x" aria-hidden="true" value="{{$profesores->id}}"></i></th>
-                                        <th><i class="fa fa-commenting fa-2x" aria-hidden="true" value="{{$profesores->id}}"></i></th>
-                                        <th><i class="fa fa-trash fa-2x fa-align-center" aria-hidden="true" value="{{$profesores->id}}"></i></th>
-                                        <th><i class="fa fa-graduation-cap fa-2x" aria-hidden="true" value="{{$profesores->id}}"></i></th>
+                                     <!--   <th><center>{{$profesores->id}}</center></th> -->
+                                        <th><center>{{$profesores->name}}</center></th>
+                                        <th><center>{{$profesores->matricula}}</center></th>
+                                        <th><center><i class="fa fa-info-circle fa-2x" aria-hidden="true" value="{{$profesores->id}}"></i></center></th>
+                                        <th><center><i class="fa fa-commenting fa-2x" aria-hidden="true" value="{{$profesores->id}}"></i></center></th>
+                                        <th><center> <i class="fa fa-trash fa-2x fa-align-center" aria-hidden="true" value="{{$profesores->id}}"></i> </center></th>
+                                        <th><center><i class="fa fa-graduation-cap fa-2x" aria-hidden="true" id="{{$profesores->id}}" value="{{$profesores->is_tutor}}"></i></center></th>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -100,34 +102,36 @@
 <script>
     $(document).ready(function(){
 
-      $('.rowsTabla > th > div > button').each(function(){
+      $('i.fa-graduation-cap').each(function(){
              if($(this).attr('value') == 0){
-                 $(this).addClass("btn-danger");
+                $(this).css("color","black");    
              }
              else{
-                 $(this).addClass("btn-success");
+                 $(this).css("color","#ffcc66");
              }
          });
 
-         $('.rowsTabla > th > div > button').click(function(){
-             //alert($(this).attr('id'));
+         $('i.fa-graduation-cap').click(function(){
+            
              if($(this).attr('value') == 0)
              {
-                 $(this).removeClass('btn-danger');
-                 $(this).addClass('btn-success');
+                 
+                 $(this).css("color","#ffcc66");
                  $(this).attr('value',1);
+                
              }
              else{
-                 $(this).removeClass('btn-success');
-                 $(this).addClass('btn-danger');
+                
+                $(this).css("color","black")   
                  $(this).attr('value',0);
+                 
              }
              $.ajax({
-                 url:'/Admin/Comentarios/'+$(this).attr("id")+'/cambiarStatus',
+                 url:'/Admin/Profesores/'+$(this).attr("id")+'/hacerTutor',
                  type:'POST',
                  dataType:'json',
                  data:{
-                     'status': $(this).attr('value')
+                     'is_tutor': $(this).attr('value')
                  },beforeSend: function (xhr) {                                      //Antes de enviar la peticion AJAX se incluye el csrf_token para validar la sesion.
                     var token = $('meta[name="csrf_token"]').attr('content');
 
