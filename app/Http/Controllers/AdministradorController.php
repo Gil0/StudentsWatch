@@ -38,4 +38,13 @@ class AdministradorController extends Controller
          $comentarios = DB::table('comentarios')->select('*')->get();
         return view('/Admin/AdminComentarios',['comentarios'=>$comentarios]);
      }
+
+     
+    public function eliminarProfesor(Request $request, $id)
+    {
+        DB::table('users')->where('id',$id)->delete();
+
+         return redirect()->action('AdministradorController@profesores');
+    }
+
 }

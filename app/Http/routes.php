@@ -66,3 +66,4 @@ Route::get('/Admin/Profesores',  ['middleware' => 'administrador', 'uses' => 'Ad
 Route::get('/Admin/Comentarios', 'AdministradorController@comentarios');
 Route::post('/Admin/Comentarios/{idComentario}/cambiarStatus', 'AdministradorController@cambiarStatus');
 Route::post('/Admin/Comentarios/{id}/eliminar', 'comentarioController@eliminarComentario');
+Route::post('/Admin/Profesor/{id}/eliminar', 'AdministradorController@eliminarProfesor');
