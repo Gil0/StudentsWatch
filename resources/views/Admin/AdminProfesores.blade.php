@@ -49,7 +49,7 @@
                             <table class="table table-hover">
                                 <thread>
                                     <tr class="rowsTabla">
-                                       <!-- <th>id</th> -->
+                              <!--          <th>id</th> -->
                                         <th>Nombre</th>
                                         <th>Matricula</th>
                                         <th>Ver Información</th>
@@ -61,11 +61,11 @@
                                 <tbody>
                                     @foreach($profesores as $profesores)
                                     <tr>
-                                     <!--   <th><center>{{$profesores->id}}</center></th> -->
+                                    <!--   <th><center>{{$profesores->idProfesor}}</center></th> -->
                                         <th><center>{{$profesores->name}}</center></th>
                                         <th><center>{{$profesores->matricula}}</center></th>
-                                        <th><center><i class="fa fa-info-circle fa-2x" aria-hidden="true" value="{{$profesores->id}}"></i></center></th>
-                                        <th><center><i class="fa fa-commenting fa-2x" aria-hidden="true" value="{{$profesores->id}}"></i></center></th>
+                                        <th><center><i class="fa fa-info-circle fa-2x" aria-hidden="true" value="{{$profesores->idProfesor}}"></i></center></th>
+                                        <th><center><i class="fa fa-commenting fa-2x" aria-hidden="true" value="{{$profesores->idProfesor}}"></i></center></th>
                                         <th><center> <i class="fa fa-trash fa-2x fa-align-center" aria-hidden="true" value="{{$profesores->id}}"></i> </center></th>
                                         <th><center><i class="fa fa-graduation-cap fa-2x" aria-hidden="true" id="{{$profesores->id}}" value="{{$profesores->is_tutor}}"></i></center></th>
                                     </tr>
@@ -151,6 +151,15 @@
          });
     });
   
+
+                   
+        $('i.fa-info-circle').click(function(){
+            window.location.href = '/Admin/Profesores/'+$(this).attr('value')+'/Ver';
+         } );
+         
+        $('i.fa-commenting').click(function(){
+           window.location.href = '/Admin/Comentarios/'+$(this).attr('value')+'/ver';
+        });
 </script>
 
 @endsection

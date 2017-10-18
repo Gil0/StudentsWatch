@@ -24,7 +24,11 @@ class AdministradorController extends Controller
         return view('/Admin/homea');
     }
     public function profesores(){
-        $profesores = DB::table('users')->where('is_Profesor',true)->get();
+        $profesores=DB::table('users')
+        ->join('profesores', 'profesores.user_id' , '=' ,'users.id')
+        ->select( 'profesores.*', 'users.*')
+        ->get();
+       // dd($profesores);
         return view('/Admin/AdminProfesores',['profesores'=>$profesores]);       
     }
     
@@ -51,6 +55,22 @@ class AdministradorController extends Controller
     {
         $evento = DB::table('users')->where('id',$id)->update(['is_tutor' => $request->is_tutor,]);
         return json_encode('Se actualizó el status ');
+    }
+
+    public function verProfesor(Request $request, $id){
+        $profesores=DB::table('users')
+        ->join('profesores', 'profesores.user_id' , '=' ,'users.id')
+        ->select( 'profesores.idProfesor','profesores.descripcion','profesores.cubiculo', 'profesores.hobbies', 'users.name', 'users.matricula',  'users.email')
+        ->where('idProfesor',$id)->first();
+        $formacion_academica = DB::table('formacionacademica')->select('*')->where('idProfesor',$id)->get();
+        $informacion_laboral = DB::table('informacionlaboral')->select('*')->where('idProfesor',$id)->get();
+        $comentarios = DB::table('comentarios')->select('*')->where('idProfesor',$id)->paginate(3);        
+         return view('/Usuario/VerProfesores')
+                ->with('profesores',$profesores)
+    
+                ->with('formacion_academica',$formacion_academica)
+                ->with('informacion_laboral',$informacion_laboral)
+                ->with('comentarios',$comentarios);
     }
 
 }
