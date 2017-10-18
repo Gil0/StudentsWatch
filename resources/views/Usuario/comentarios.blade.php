@@ -170,7 +170,7 @@
               </div>
               
                 <div class="panel panel-default">
-                  <div class="panel-heading">Comentarios</div>
+                  <div class="panel-heading">Comentarios de profesor {{$profesores->name}}</div>
                     <div class="panel-body">
                       <table class="table table-striped">
                         <thread>

@@ -36,11 +36,16 @@ class comentarioController extends Controller
         return view('/Usuario/Comentarios',['profesores'=>$profesores]);
      }
 
-       public function verProfesor(Request $request, $id){
-        $profesor= DB::table('profesores')->select('*')->where('idProfesor', $id)->first();
-       $comentarios=DB::table('comentarios')->select('*')->where('idProfesor',$id)->where('status',1)->get();
+    
         
-        return view('/Usuario/comentarios')->with('profesores',$profesor)->with('comentarios',$comentarios);      
+    public function verProfesor(Request $request, $id){
+        $profesores=DB::table('users')
+        ->join('profesores', 'profesores.user_id' , '=' ,'users.id')
+        ->select( 'profesores.idProfesor','profesores.descripcion','profesores.cubiculo', 'profesores.hobbies', 'users.name', 'users.matricula',  'users.email')
+        ->where('idProfesor',$id)->first();
+        $comentarios = DB::table('comentarios')->select('*')->where('idProfesor',$id)->paginate(3);        
+        
+        return view('/Usuario/comentarios')->with('profesores',$profesores)->with('comentarios',$comentarios);      
 
     }
 
