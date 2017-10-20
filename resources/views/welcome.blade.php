@@ -143,7 +143,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Bienvenido</div>
                             <div class="panel-body">
-                                Hola Alumno.
+                                Hola Alumno, bienvenido...
                             </div>
                         </div>
                     </div>
