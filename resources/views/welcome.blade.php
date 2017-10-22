@@ -121,7 +121,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Bienvenido</div>
                             <div class="panel-body">
-                                Hola Profesor.
+                                Hola Profesor :).
                             </div>
                         </div>
                     </div>
