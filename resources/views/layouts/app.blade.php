@@ -12,13 +12,20 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-
+    <link rel="stylesheet" href="../css/estilos.css" type="text/css" >
     <!-- Styles -->    
+   
+   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+   <!--ESTILOS MIOS-->
+   <link rel="stylesheet" href="../assets/css/estilos.css">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
     <style>
         body {
             font-family: 'Lato';
+           /*background-color:#AED6F1; */
+          <img src="../assets/img/book.jpg">
+        
         }
 
         .fa-btn {
@@ -26,10 +33,10 @@
         }
     </style>
 </head>
-<body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
+<body background ="../assets/img/hu.jpg" id="app-layout">
+    <nav class=" header header-top">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header  ">
 
                 <!-- Collapsed Hamburger -->
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
@@ -40,8 +47,10 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    StudentsWatch
+                <a class="navbar-brand " href="{{ url('/') }}">
+                   
+                   <div  class="letra"><img  style="float:left;" class="mediana" src="../assets/img/escudo.png"> StudentsWatch</div>
+                
                 </a>
             </div>
 
@@ -55,7 +64,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}"><i class="fa fa-btn fa-user"></i>Iniciar sesión</a></li>
+                        <li ><a href="{{ url('/login') }}"><i class="fa fa-btn fa-user"></i>Iniciar sesión</a></li>
                         <li><a href="{{ url('/register') }}"><i class="fa fa-id-card-o" aria-hidden="true"> </i> Registrarse</a></li>
                     @else
                         <li class="dropdown">
@@ -100,5 +109,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>    
-    </body>    
+   <!--FOOTER-->
+   <footer style="padding-bottom: 0;">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-xs-12 col-sm-6 ">
+                            <div class="nav  ">
+                                <a class="letra" href="www.buap.mx">Benemérita Universidad Autonoma de Puebla <br> 4 Sur 104 Centro Historico <br>CP. 72000 Teléfono +52(222) 2295500<br>ext.5013</a>
+                              
+
+                            </div>
+                        </div>
+                       
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-sm-offset-2">
+                            <div class="logo letra"><li>"PENSAR BIEN PARA VIVIR MEJOR"</li>  </div>
+                        </div>               
+                       
+                    </div>
+                </div>
+            </footer>
+         <!--finFOOTER-->
+</body>    
 </html>
