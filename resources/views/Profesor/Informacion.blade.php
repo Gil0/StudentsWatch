@@ -207,7 +207,7 @@ p {
                                                 <th>{{$academica->estudios}}</th>
                                                 <th>{{$academica->periodo}}</th>                                            
                                                 <th></th>
-                                                <th><button><i class="fa fa-trash fa-2x icondelete" id="EliminarAcademica" aria-hidden="true" value="{{$academica->idFormacionAcademica}}"></i></button></th>
+                                                <th><span><i class="fa fa-trash fa-2x icondelete" id="EliminarAcademica" aria-hidden="true" value="{{$academica->idFormacionAcademica}}"></i></span></th>
                                                 <th></th>
                                             </tr>
                                         @endforeach
