@@ -14,6 +14,7 @@
         </div>
     </div>
 </div>  
+
 <!------ Slider ------------>
 <div class="slider">
 	      	<div class="slider-wrapper theme-default">
