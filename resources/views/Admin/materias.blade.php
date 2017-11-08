@@ -35,7 +35,7 @@
             <li><a href="{{ url('/') }}">Inicio</a></li>
             <li><a href="{{ url('/login') }}">Alumnos</a></li>
             <li><a href="{{ url('/Admin/Profesores') }}">Profesores</a></li>
-            <li><a href="{{ url('/login') }}">Comentarios</a></li>
+            <li><a href="{{ url('/Admin/Comentarios') }}">Comentarios</a></li>
             <li><a href="{{ url('/Admin/Materias') }}">Materias</a></li>
         </ul>
      </div>

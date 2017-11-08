@@ -3,6 +3,24 @@
 <meta name="csrf_token" content="{{ csrf_token() }}" /> <!--Se necestia este metadato para poder hacer AJAX, se envia el csrf_token al server para validar que si existe la sesion -->
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <style>
+    @import url('http://fonts.googleapis.com/css?family=Julius+Sans+One');
+    @import url('https://fonts.googleapis.com/css?family=Anton');
+   
+    .profesor{
+        color: #3385ff;
+        font-family: 'Anton', sans-serif;
+        letter-spacing: 2px;
+        font-size: 50px;
+    }
+    i.fa-trash{
+      color: #d9534f;
+    }
+    i.fa-trash:hover{
+        color:red;
+    }
+
+    }
+  
 </style>
 <div class="container">
     <div class="navar">
@@ -10,17 +28,16 @@
             <li><a href="{{ url('/') }}">Inicio</a></li>
             <li><a href="{{ url('/login') }}">Alumnos</a></li>
             <li><a href="{{ url('/Admin/Profesores') }}">Profesores</a></li>
-            <li><a href="{{ url('/login') }}">Comentarios</a></li>
             <li><a href="{{ url('/Admin/Comentarios') }}">Comentarios</a></li>
+            <li><a href="{{ url('/Admin/Materias') }}">Materias</a></li>
         </ul>
     </div>
     
 
     <div class="col-sm-9">
-        <div>
-          <p class="profesor">Profesores</p>
-        </div>
-       
+        <div align="center" >
+        <p class="profesor">Comentarios</p>
+        </div> 
         <div class="panel panel-default">
           <div class="panel-body">
             <table class="table table-hover">
