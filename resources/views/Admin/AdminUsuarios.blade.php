@@ -61,5 +61,31 @@
     </div>
 </div>
 
+<div class="modal fade" id="eliminarAlumno" tabindex="-1" role="dialog" aria-labelledby="Eliminar Profesor">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+           <p class="lead" style="text-align:center;">¿Estas seguro de eliminar éste Alumno?</p>
+      </div>
+      <div class="modal-footer">
+        <form method="POST" action="" id="eliminarAlumno">
+            {{ csrf_field() }}
+            <button type="submit" class="btn btn-danger" style="width:100%;">SI</button>
+        </form>
+        <button type="button" class="btn btn-default" style="width:100%;" data-dismiss="modal">NO</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(document).ready(function(){  
+         $('i.fa-trash').click(function(){
+           $('#eliminarAlumno').modal('show');
+           $('form#eliminarAlumno').attr('action','/Admin/Alumno/'+$(this).attr('value')+'/eliminar');
+         });
+    });
+</script>
+
 
 @endsection
