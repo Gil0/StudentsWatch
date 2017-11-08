@@ -72,4 +72,22 @@ class AdministradorController extends Controller
                 ->with('comentarios',$comentarios);
     }
 
+    public function Materias(){
+        $materias = DB::table('materias')->select('*')->get();
+       return view('/Admin/materias',['materias'=>$materias]);
+    }
+
+    public function crearMateria(Request $request){
+        DB::table('materias')->insert([
+           'nombre' => $request->materia
+       ]);
+      return redirect()->action('AdministradorController@Materias');
+    }
+
+    public function eliminarMateria(Request $request, $id)
+    {
+        DB::table('materias')->where('idMateria',$id)->delete();
+
+         return redirect()->action('AdministradorController@Materias');
+    }
 }
