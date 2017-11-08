@@ -5,43 +5,7 @@
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <style>
     @import url('http://fonts.googleapis.com/css?family=Julius+Sans+One');
-    @import url('https://fonts.googleapis.com/css?family=Anton');
-    body{
-        padding: 0;
-        margin: 0;
-    }
-    .margen{
-        padding: 0;
-        margin: 0;
-    }
-    /*----- Nav Superior -----*/
-    .navsup{
-        height: 55px;
-        background: red;
-    }
-    .imglogo{
-        position: absolute;
-        left: 0px;
-        width: 5%;
-        top: -3px;
-    }
-    .logo{
-        color: #fff;
-        font-size: 20px;
-        font-family: 'Anton', sans-serif;
-        letter-spacing: 3px;
-        padding-top: 12px;
-        padding-left: 70px;
-    }
-    .log{
-        color: #06bb84;
-        font-family: 'Anton', sans-serif;
-        text-align: center;
-    }
-    /*----- Buscador -----*/
-    .buscador{
-        padding-top: 10px;
-    }
+    @import url('https://fonts.googleapis.com/css?family=Anton'); 
     /*----- Banner -----*/
     .profesor{
         color: #3385ff;
@@ -49,31 +13,7 @@
         letter-spacing: 2px;
         font-size: 50px;
     }
-    /*----- Panel -----*/
-    .panelesp{
-        top: 20px;
-    }
-    /*----- Menu -----*/
-    @media (min-width: 768px) {
-        .sidebar-nav .navbar .navbar-collapse {
-            padding: 0;
-            max-height: none;
-        }
-        .sidebar-nav .navbar ul {
-            float: none;
-        }
-        .sidebar-nav .navbar ul:not {
-            display: block;
-        }
-        .sidebar-nav .navbar li {
-            float: none;
-            display: block;
-        }
-        .sidebar-nav .navbar li a {
-            padding-top: 12px;
-            padding-bottom: 12px;
-        }
-    }
+    
 </style>
 
 
@@ -167,16 +107,6 @@
             <div class="col-sm-9">
                 <div align="center" >
                     <p class="profesor">Profesores</p>
-                </div>
-                <div>
-                    <div class="col-sm-8 buscador">
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Buscar</button>
-                            </span>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
                 </div>
                 <div class="panelesp">
                     <div class="panel-body">
