@@ -41,6 +41,9 @@ Route::get('/Usuario/Profesores',  ['middleware' => 'auth', 'uses' => 'UserContr
 Route::post('/user/comentario/crear/{id}',  ['middleware' => 'auth', 'uses' => 'UserController@crearComentario']);
 Route::get('/Usuario/Comentarios/{id}/ver',['middleware' => 'auth', 'uses' => 'comentarioController@verProfesor']);
 Route::get('/Usuario/Profesores/{id}/Ver',  ['middleware' => 'auth', 'uses' => 'UserController@verProfesor']);
+//materias usuarios
+Route::get('/Usuario/Materias',  ['middleware' => 'auth', 'uses' => 'UserController@materias']);
+Route::post('/user/MateriaCursada/crear/{id}',  ['middleware' => 'auth', 'uses' => 'UserController@agregarMateriaCursada']);
 //| Aqui se encuentran las rutas a las funcionalidades de profesores.
 
 
@@ -70,3 +73,6 @@ Route::post('/Admin/Profesor/{id}/eliminar', 'AdministradorController@eliminarPr
 Route::post('/Admin/Profesores/{id}/hacerTutor', 'AdministradorController@hacerTutor');
 Route::get('/Admin/Profesores/{id}/Ver',  ['middleware' => 'administrador', 'uses' => 'AdministradorController@verProfesor']);
 Route::get('/Admin/Comentarios/{id}/ver',['middleware' => 'auth', 'uses' => 'comentarioController@verProfesor']);
+Route::get('/Admin/Materias', 'AdministradorController@Materias');
+Route::post('/Admin/materia/crear/',  ['middleware' => 'administrador', 'uses' => 'AdministradorController@crearMateria']);
+Route::post('/Admin/Materia/{id}/eliminar', 'AdministradorController@eliminarMateria');
