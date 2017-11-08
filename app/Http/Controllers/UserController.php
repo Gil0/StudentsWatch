@@ -95,4 +95,23 @@ class userController extends Controller
                 ->with('informacion_laboral',$informacion_laboral)
                 ->with('comentarios',$comentarios);
     }
+// materias usuario
+public function materias(){
+    $materias=DB::table('materias')->get();
+              //dd($profesores);
+              return view('Usuario.materias', ['materias' => $materias]);
+      }
+
+public function agregarMateriaCursada(Request $request, $id){
+    DB::table('alumno_cursos')->insert([
+
+       'idMateria' => $id,
+       'User_id' => $request->user,
+       'cursando' => false,
+      
+   ]);
+
+  return redirect()->action('UserController@materias');
+}
+
 }
