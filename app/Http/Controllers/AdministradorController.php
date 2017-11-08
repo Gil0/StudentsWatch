@@ -90,4 +90,16 @@ class AdministradorController extends Controller
 
          return redirect()->action('AdministradorController@Materias');
     }
+
+    public function Alumnos(){
+        $users=DB::table('users')->where('is_profesor',0)->where('is_admin',0)->get();
+        return view('/Admin/AdminUsuarios',['users'=>$users]);       
+    }
+
+    public function eliminarAlumno(Request $request, $id)
+    {
+        DB::table('users')->where('id',$id)->delete();
+
+         return redirect()->action('AdministradorController@Alumnos');
+    }
 }

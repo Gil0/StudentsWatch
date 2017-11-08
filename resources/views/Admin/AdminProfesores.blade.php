@@ -19,10 +19,7 @@
     i.fa-trash:hover{
         color:red;
     }
-    .head{
-      background-color: #5cb85c;
-      color: white; 
-    } 
+    
 </style>
 <meta name="csrf_token" content="{{ csrf_token() }}" /> <!--Se necestia este metadato para poder hacer AJAX, se envia el csrf_token al server para validar que si existe la sesion -->
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -32,7 +29,7 @@
 <div class="navar">
 <ul class="nav nav-pills"> 
     <li><a href="{{ url('/') }}">Inicio</a></li>
-    <li><a href="{{ url('/login') }}">Alumnos</a></li>
+    <li><a href="{{ url('/Admin/Alumnos') }}">Alumnos</a></li>
     <li><a href="{{ url('/Admin/Profesores') }}">Profesores</a></li>
     <li><a href="{{ url('/Admin/Comentarios') }}">Comentarios</a></li>
     <li><a href="{{ url('/Admin/Materias') }}">Materias</a></li>

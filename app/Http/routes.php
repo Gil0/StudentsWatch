@@ -76,3 +76,5 @@ Route::get('/Admin/Comentarios/{id}/ver',['middleware' => 'auth', 'uses' => 'com
 Route::get('/Admin/Materias', 'AdministradorController@Materias');
 Route::post('/Admin/materia/crear/',  ['middleware' => 'administrador', 'uses' => 'AdministradorController@crearMateria']);
 Route::post('/Admin/Materia/{id}/eliminar', 'AdministradorController@eliminarMateria');
+Route::get('/Admin/Alumnos',  ['middleware' => 'administrador', 'uses' => 'AdministradorController@Alumnos']);
+Route::post('/Admin/Alumno/{id}/eliminar', 'AdministradorController@eliminarAlumno');
