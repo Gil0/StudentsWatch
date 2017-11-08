@@ -5,7 +5,7 @@ body {
  /* background-image: url("../assets/img/warning.png");*/
 }
 .header{
-	background:#00171F;
+	background: rgb(23, 94, 117);
 }
 .header-top{
 	padding:3% 0;
@@ -35,20 +35,32 @@ body {
    
       /*font-style:italic;*/
       font-weight:bold;
-      font-size:1.5em;
-      color: yellow;
+      font-size:2em;
+      color: white;
       
       font-family:'Gill Sans', 'Times New Roman''Helvetica','Verdana','Monaco',sans-serif;
 
 }
+img.pequeñita{
+    width: 100px; 
+  }
 img.pequeña{
-    width: 50px; height: 50px;
+    width: 400px; 
   }
   img.mediana{
     width: 130px; height: 130px;
     padding-top: -50px;
     position: relative;
-    top: -2em;
+    top: -3em;
+	left:-20%;
+  }
+  img.mediana1{
+    width: 130px; height: 130px;
+    padding-top: -50px;
+    position: relative;
+	top: -4em;
+	/*top:  50px; */
+	left:-45%;
    
   }
   img.grande{
@@ -245,10 +257,10 @@ footer .container .row ul {
    padding-left: 20px;
     list-style: none;
 }
-
+/*
 footer .nav a:hover {
     text-decoration: underline;
-}
+}*/
 
 footer .logo {
     background: #003459;
