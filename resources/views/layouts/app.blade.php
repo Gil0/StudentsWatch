@@ -24,7 +24,7 @@
         body {
             font-family: 'Lato';
            /*background-color:#AED6F1; */
-          <img src="../assets/img/book.jpg">
+          /*<img src="../assets/img/book.jpg">*/
         
         }
 
@@ -49,7 +49,8 @@
                 <!-- Branding Image -->
                 <a class="navbar-brand " href="{{ url('/') }}">
                    
-                   <div  class="letra"><img  style="float:left;" class="mediana" src="../assets/img/escudo.png"> StudentsWatch</div>
+                <img  class="pequeña" style="float:left;"  src="../assets/img/logo4.png">
+                <img  class="mediana1"   src="../assets/img/culares.png">
                 
                 </a>
             </div>
@@ -115,18 +116,41 @@
                     <div class="row ">
                         <div class="col-xs-12 col-sm-6 ">
                             <div class="nav  ">
+                                <img  style="float:left;" class="mediana" src="../assets/img/escudo.png">
                                 <a class="letra" href="www.buap.mx">Benemérita Universidad Autonoma de Puebla <br> 4 Sur 104 Centro Historico <br>CP. 72000 Teléfono +52(222) 2295500<br>ext.5013</a>
                               
 
                             </div>
+                            
                         </div>
                        
                         <div class="col-xs-12 col-sm-4 col-md-4 col-sm-offset-2">
-                            <div class="logo letra"><li>"PENSAR BIEN PARA VIVIR MEJOR"</li>  </div>
-                        </div>               
-                       
-                    </div>
-                </div>
+                            
+                            <div class="logo letra"><li><div class="footer-box">
+                            
+	     <div class="wrap">
+	     	
+	    	<div id="slideshow">
+			 	<div class="f-desc1">
+					<p align="center" class="letra">"Pensar bien para vivir mejor"</p>
+				</div>
+				<div class="f-desc1">
+			 		<p align="center" class="letra">"Pensar bien para vivir mejor"</p>
+				</div>
+			</div>
+		<script>
+			$("#slideshow > div:gt(0)").hide();
+			setInterval(function() { 
+			  $('#slideshow > div:first')
+			    .fadeOut(00)
+			    .next()
+			    .fadeIn(500)
+			    .end()
+			    .appendTo('#slideshow');
+			},  2000);
+		</script>
+		
+	
             </footer>
          <!--finFOOTER-->
 </body>    
