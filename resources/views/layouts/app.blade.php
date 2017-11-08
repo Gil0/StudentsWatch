@@ -117,7 +117,7 @@
                         <div class="col-xs-12 col-sm-6 ">
                             <div class="nav  ">
                                 <img  style="float:left;" class="mediana" src="../assets/img/escudo.png">
-                                <a class="letra" href="www.buap.mx">Benemérita Universidad Autonoma de Puebla <br> 4 Sur 104 Centro Historico <br>CP. 72000 Teléfono +52(222) 2295500<br>ext.5013</a>
+                                <a class="letra" target="blank" href="{{ url('http://www.buap.mx') }}">Benemérita Universidad Autonoma de Puebla <br> 4 Sur 104 Centro Historico <br>CP. 72000 Teléfono +52(222) 2295500<br>ext.5013</a>
                               
 
                             </div>
