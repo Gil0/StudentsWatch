@@ -25,8 +25,8 @@
     <div class="row">
         <div class="col-md-12 ">
             <div class="panel panel-default">
-                    <div class="panel-body">
-                <center>  <p> Alumnos registrados en el sistema</p> </center>
+                    <div class="panel-body logindiv1">
+                <center>  <p class=letra2> Alumnos registrados en el sistema</p> </center>
 
                     <div class="panel panel-default">
                         <div class="panel-body">
