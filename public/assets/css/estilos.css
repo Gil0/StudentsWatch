@@ -1,14 +1,14 @@
 body {
-    /*background-repeat: no-repeat;*/
-  /* background-color:#0E588A  ; */
+    background-repeat: no-repeat;
+   background-color:#EBF5FB ; 
   /* background-image: url("../assets/img/warning.png");*/
  /* background-image: url("../assets/img/warning.png");*/
 }
 .header{
-	background: rgb(23, 94, 117);
+	background:#212F3C  ;
 }
 .header-top{
-	padding:3% 0;
+	padding:1% 0;
 }
 .header-bottom{
 	padding:1% 0;
@@ -29,6 +29,18 @@ body {
     font-size:1.5em;
     color: black;
 }
+.letra2{
+    
+    /*background-image: url("../assets/img/logo.png");*/
+   
+      /*font-style:italic;*/
+      font-weight:bold;
+      font-size:1.5em;
+      color: black;
+      
+      font-family: 'Times New Roman''Helvetica','Verdana','Monaco',sans-serif;
+
+}
 .letra{
     
     /*background-image: url("../assets/img/logo.png");*/
@@ -41,11 +53,24 @@ body {
       font-family:'Gill Sans', 'Times New Roman''Helvetica','Verdana','Monaco',sans-serif;
 
 }
+.letra1{
+    
+    /*background-image: url("../assets/img/logo.png");*/
+   
+      /*font-style:italic;*/
+      font-weight:bold;
+      font-size:2em;
+      color: yellow;
+      
+      font-family:'Gill Sans', 'Times New Roman''Helvetica','Verdana','Monaco',sans-serif;
+
+}
 img.pequeñita{
     width: 100px; 
   }
 img.pequeña{
-    width: 400px; 
+	padding-left: -50px;
+    width: 300px; 
   }
   img.mediana{
     width: 130px; height: 130px;
@@ -66,6 +91,45 @@ img.pequeña{
   img.grande{
     width: 200px; height: 200px;
   }
+  /*slider*/
+* {
+	  padding: 0px;
+	  margin: 0px;
+  }
+  img.slider
+  {
+	  width:800px;
+  }
+  #contenedor 
+  {
+	  width:800px;
+	  margin: 30px auto;
+	  overflow: hidden; /*oculta las imagenes*/ 
+  }
+  #contenedor ul 
+  {
+	  list-style: none;
+	  width:2800px;
+	  display:flex;
+	  animation: slide 20s infinite alternate;
+  }
+ @keyframes slide {
+	 0% {margin-left:0px;}
+	 20% {margin-left:0px;} 
+
+	 25% {margin-left:-800px;}
+	 45% {margin-left:-800px;}
+
+	50% {margin-left:-1600px;}
+	 70% {margin-left:-1600px;}
+	 /* 
+
+	 75% {margin-left:-2200px;}
+	 100% {margin-left:-2200px;}*/
+
+ }
+
+  /*Fin slider*/
   #header-inner img { 
     margin: auto; 
  }
@@ -227,8 +291,8 @@ img.pequeña{
  /*finSlider*/
  /*FOOTER*/
  footer {
-    background: #00171F;
-    color: #FFF;
+    background:#02131E;
+    
     padding-top: 50px;
     padding-right: 30px;
     padding-bottom: 30px;
@@ -248,7 +312,7 @@ footer .nav a {
     padding: -200px;
     color: #FFF;
     text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,.2);
+    border-bottom: 1px solid #02131E;
     font-size: 13px;
  
 }
@@ -263,14 +327,54 @@ footer .nav a:hover {
 }*/
 
 footer .logo {
-    background: #003459;
+    background: #4591E1;
     color: #FFF;
     padding: 25px;
     font-weight: 50px;
     border-radius: 0 30px 0 30px;
     font-size: 10px;
     text-align: center;
-    padding-top: 5px;
+    padding-top: 5px;	
     
 }
  /*FOOTER*/
+ /*margen del div usuario*/
+ 
+ .logindiv { 
+	float: left; 
+	margin: 40px 80px 0 -90px; 
+	overflow: hidden; 
+	padding: 0; 
+	width: 980px; 
+	}
+	 
+	.logindiv1 { 
+		float: left; 
+		margin: 40px 80px 0 90px; 
+		overflow: hidden; 
+		padding: 0; 
+		width: 980px; 
+		}
+		.logindiv2 { 
+			float: left; 
+			margin: 40px 80px 0 50px; 
+			overflow: hidden; 
+			padding: 0; 
+			width: 980px; 
+			}
+			.logindiv3 { 
+				float: left; 
+				margin: 40px 80px 0 -30px; 
+				overflow: hidden; 
+				padding: 0; 
+				width: 980px; 
+				}
+				.logindiv4 { 
+					float: left; 
+					margin: 40px 80px 0 75px; 
+					overflow: hidden; 
+					padding: 0; 
+					width: 980px; 
+					}
+ 
+ /**/
