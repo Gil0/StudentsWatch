@@ -18,7 +18,7 @@ IMG.imagenUsuario{
 <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <div class="panel panel-default">
+        <div class="panel panel-default logindiv1">
             <div class="panel-heading labelmenu">Imagen de Perfil</div>
                 <div class="panel-body">              
                     <form id="editarImagen" class="form-horizontal" action="{{ url('/configuracion/'.encrypt($info->id).'/guardarImagen') }}" method="POST" enctype="multipart/form-data">                                                                           
@@ -30,7 +30,7 @@ IMG.imagenUsuario{
                                 <img class="imagenUsuario" src="../assets/img/default_user.png" alt="Imagen Usuario">
                             @endif 
                         </div>
-                  <div class="form-group">
+                  <div class="form-group ">
                   <label class="col-sm-2 control-label">Imagen de Perfil</label>
                     <div class="col-lg-10 col-sm-10 col-10">
                       <div class="input-group">
@@ -88,8 +88,8 @@ IMG.imagenUsuario{
         </div>
     </div>                 
           <div class="col-sm-12">
-            <div class="panel panel-default">
-                <div class="panel-heading labelmenu">Información de Cuenta</div>
+            <div class="panel panel-default logindiv4">
+                <div class="panel-heading labelmenu ">Información de Cuenta</div>
                   <div class="panel-body">                    
                     <!--
                     <form id="editarInformacion" class="form-horizontal" action="/configuracion/{{$info->id}}/guardarCambios" method="POST">   
@@ -132,7 +132,7 @@ IMG.imagenUsuario{
     <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-default">
+            <div class="panel panel-default logindiv1">
                 <div class="panel-heading" style="text-align:center;">Cambiar Contraseña</div>
                     
             
