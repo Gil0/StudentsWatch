@@ -33,7 +33,8 @@
         }
     </style>
 </head>
-<body background ="../assets/img/hu.jpg" id="app-layout">
+<<!--<body background ="../assets/img/hu.jpg" id="app-layout">-->
+<body id="app-layout">
     <nav class=" header header-top">
         <div class="container">
             <div class="navbar-header  ">
@@ -48,9 +49,9 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand " href="{{ url('/') }}">
-                   
-                <img  class="pequeña" style="float:left;"  src="../assets/img/logo4.png">
-                <img  class="mediana1"   src="../assets/img/culares.png">
+                   <div class="letra"> StudentsWatch</div>
+                <!--<img  class="pequeña" style="float:left;"  src="../assets/img/logo.png">-->
+              
                 
                 </a>
             </div>
@@ -65,7 +66,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li ><a href="{{ url('/login') }}"><i class="fa fa-btn fa-user"></i>Iniciar sesión</a></li>
+                        <li><a href="{{ url('/login') }}"><i class="fa fa-btn fa-user"></i>Iniciar sesión</a></li>
                         <li><a href="{{ url('/register') }}"><i class="fa fa-id-card-o" aria-hidden="true"> </i> Registrarse</a></li>
                     @else
                         <li class="dropdown">
@@ -116,6 +117,9 @@
                     <div class="row ">
                         <div class="col-xs-12 col-sm-6 ">
                             <div class="nav  ">
+
+
+                            
                                 <img  style="float:left;" class="mediana" src="../assets/img/escudo.png">
                                 <a class="letra" target="blank" href="{{ url('http://www.buap.mx') }}">Benemérita Universidad Autonoma de Puebla <br> 4 Sur 104 Centro Historico <br>CP. 72000 Teléfono +52(222) 2295500<br>ext.5013</a>
                               
@@ -123,13 +127,18 @@
                             </div>
                             
                         </div>
+
+
+
+                        
                        
                         <div class="col-xs-12 col-sm-4 col-md-4 col-sm-offset-2">
                             
                             <div class="logo letra"><li><div class="footer-box">
+                                
                             
 	     <div class="wrap">
-	     	
+	     
 	    	<div id="slideshow">
 			 	<div class="f-desc1">
 					<p align="center" class="letra">"Pensar bien para vivir mejor"</p>
@@ -137,7 +146,8 @@
 				<div class="f-desc1">
 			 		<p align="center" class="letra">"Pensar bien para vivir mejor"</p>
 				</div>
-			</div>
+            </div>
+            
 		<script>
 			$("#slideshow > div:gt(0)").hide();
 			setInterval(function() { 
