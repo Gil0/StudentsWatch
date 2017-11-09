@@ -33,7 +33,7 @@
         }
     </style>
 </head>
-<<!--<body background ="../assets/img/hu.jpg" id="app-layout">-->
+<!--<body background ="../assets/img/hu.jpg" id="app-layout">-->
 <body id="app-layout">
     <nav class=" header header-top">
         <div class="container">
