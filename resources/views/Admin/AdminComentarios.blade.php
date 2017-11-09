@@ -34,7 +34,7 @@
     </div>
     
 
-    <div class="col-sm-9">
+    <div class="col-sm-9 logindiv2" >
         <div align="center" >
         <p class="profesor">Comentarios</p>
         </div> 
