@@ -35,7 +35,8 @@ class ProfesorController extends Controller
     {                
         $ID=Crypt::decrypt($id);         
         DB::table('profesores')->where('user_id',$ID)->update([
-            'descripcion' => $request->descripcion,            
+            'descripcion' => $request->descripcion,   
+            'cubiculo' => $request->cubiculo,   
             'hobbies' => $request->hobbies,            
         ]);
         $informacionProfesor = DB::table('profesores')->where('user_id',$ID)->first();                  
