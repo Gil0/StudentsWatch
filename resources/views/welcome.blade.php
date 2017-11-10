@@ -127,7 +127,7 @@
                 <ul class="nav nav-pills">
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
                     <li><a href="{{ url('/Profesor/Informacion/'.encrypt(Auth::user()->id)) }}">Mi Informacion</a></li>
-                    <li><a href="{{ url('/login') }}">Mis Comentarios</a></li>                                                
+                    <li><a href="{{ url('/Profesor/MisComentarios/'.encrypt(Auth::user()->id)) }}">Mis Comentarios</a></li>                                                
                   </ul>
             </div>
             <div class="row">
