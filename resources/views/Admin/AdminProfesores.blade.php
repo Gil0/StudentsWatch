@@ -23,8 +23,7 @@
 </style>
 <meta name="csrf_token" content="{{ csrf_token() }}" /> <!--Se necestia este metadato para poder hacer AJAX, se envia el csrf_token al server para validar que si existe la sesion -->
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<style>
-</style>
+
 <div class="container">
 <div class="navar">
 <ul class="nav nav-pills"> 
