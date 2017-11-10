@@ -102,4 +102,13 @@ class AdministradorController extends Controller
 
          return redirect()->action('AdministradorController@Alumnos');
     }
+
+    public function editarMateria(Request $request, $id)
+    {                        
+        DB::table('materias')->where('idMateria',$id)->update([
+            'nombre' => $request->nombre,            
+        ]);
+        $info = DB::table('materias')->select('*')->where('idMateria',$id)->first();         
+        return redirect()->action('AdministradorController@Materias');
+    }
 }
