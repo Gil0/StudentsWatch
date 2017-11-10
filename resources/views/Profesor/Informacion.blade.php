@@ -117,6 +117,22 @@ p {
                                         </div>  
                                     @endif
 
+                                    @if($informacionProfesor->cubiculo==null)
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Cubículo</label>
+                                            <div class="col-sm-10">                                                                                                                                                                        
+                                                <input type="text" class="form-control" id="cubiculo" name="cubiculo" value="{{$informacionProfesor->cubiculo}}" placeholder="Ingrese su Cubículo...">                                                
+                                            </div>
+                                        </div>                       
+                                    @else
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Cubículo</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="cubiculo" name="cubiculo" value="{{$informacionProfesor->cubiculo}}">
+                                            </div>
+                                        </div>  
+                                    @endif
+                                    
                                     @if($informacionProfesor->hobbies==null)
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Hobbies</label>
