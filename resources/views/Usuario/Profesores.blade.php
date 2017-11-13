@@ -10,8 +10,20 @@
     .profesor{
         color: #3385ff;
         font-family: 'Anton', sans-serif;
-        letter-spacing: 2px;
         font-size: 50px;
+    }
+    .fa-plus-circle{
+        color:#005ce6;
+    }
+    i.fa-plus-circle:hover{
+        color:#66a3ff
+    }
+
+    i.fa-pencil-square{
+      color: #ffcc00;
+    }
+    i.fa-pencil-square:hover{
+        color:#ffe066
     }
     
 </style>
@@ -104,43 +116,47 @@
         @endif                                        
     @endif 
 
-            <div class="col-sm-9">
+            <div class="col-sm-12">
                 <div align="center" >
                     <p class="profesor">Profesores</p>
                 </div>
-                <div class="panelesp">
-                    <div class="panel-body">
-                        <table class="table table-hover">
-                            <thread>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nombre</th>
-                                    <th>Email</th>
-                                    <th>Ver mas</th>
-                                    <th>Escribir comentario</th>
-                                    <th>Ver comentarios</th>
-                                </tr>
-                            </thread>
-                            <tbody>
-                            @foreach($profesores as $profesores)
-                                <tr>
-                                    <th scope="row">{{$profesores->idProfesor}}</th>
-                                    <th>{{$profesores->name}} </th>
-                                    <th>{{$profesores->email}} </th>
-                                    <th><i class="fa fa-plus-circle fa-2x" aria-hidden="true" value="{{$profesores->idProfesor}}"></i></th>
-                                    <th>
-                                        <div class="panel-heading">
-
-                                            <button class="btn btn-success" id="nuevoCom" style="width:100%;" value="{{$profesores->idProfesor}}">Agregar Comentario</button>
-                                        </div>
-                                    </th>
-                                    <th><i class="fa fa-pencil-square fa-2x iconpencil" aria-hidden="true" value="{{$profesores->idProfesor}}"></i></th>
-                                </tr>
-                             @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                <div class="container">
+                <div class="row">
+                 <div class="col-md-10 col-md-offset-1">
+                   <div class="panel panel-default">
+                     <table class="table table-striped">
+                       <thread>
+                         <tr>
+                           <th class="head">#</th>
+                           <th class="head">nombre</th>
+                           <th class="head">E-mail</th> 
+                           <th class="head">ver mas</th> 
+                           <th class="head">Escribir comentario</th> 
+                           <th class="head">ver comentarios</th> 
+                         </tr>
+                       </thread>
+                       <tbody>
+                       @foreach($profesores as $profesor)
+                         <tr class="rowsTabla">
+                         <th scope="row">{{$profesor->idProfesor}}</th>
+                         <th>{{$profesor->name}} </th>
+                            <th>{{$profesor->email}} </th>
+                           <th><i class="fa fa-plus-circle fa-2x" aria-hidden="true" value="{{$profesor->idProfesor}}"></i></th>
+                                 <th>
+                                <div class="panel-heading">
+                                   <button class="btn btn-success" id="nuevoCom" style="width:100%;" value="{{$profesor->idProfesor}}">Agregar Comentario</button>
+                               </div>
+                             </th>
+                              <th><i class="fa fa-pencil-square fa-2x iconpencil" aria-hidden="true" value="{{$profesor->idProfesor}}"></i></th>
+                         </tr>
+                         @endforeach
+                       </tbody>
+                     </table>
+                    <div align="center"> {!! $profesores -> render() !!}</div>
+                   </div>
+                 </div>
+               </div>
+             </div>
             </div>
         </div>
     </div>

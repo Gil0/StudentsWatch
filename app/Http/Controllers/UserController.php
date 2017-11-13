@@ -61,7 +61,7 @@ class userController extends Controller
   $profesores=DB::table('users')
             ->join('profesores', 'profesores.user_id' , '=' ,'users.id')
             ->select( 'profesores.idProfesor', 'users.name', 'users.email')
-            ->get();
+            ->paginate(4);
             //dd($profesores);
             return view('/Usuario/Profesores')->with('profesores',$profesores);
     }
