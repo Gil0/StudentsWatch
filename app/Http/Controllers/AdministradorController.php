@@ -11,7 +11,7 @@ use App\Http\Requests;
 class AdministradorController extends Controller
 {
     public function __construct(){
-        $this->middleware('administrador');
+        $this->middleware('auth');
     }
 
      /**
@@ -74,6 +74,7 @@ class AdministradorController extends Controller
 
     public function Materias(){
         $materias = DB::table('materias')->select('*')->get();
+    // dd($materias);
        return view('/Admin/materias',['materias'=>$materias]);
     }
 
@@ -101,5 +102,14 @@ class AdministradorController extends Controller
         DB::table('users')->where('id',$id)->delete();
 
          return redirect()->action('AdministradorController@Alumnos');
+    }
+
+    public function editarMateria(Request $request, $id)
+    {                        
+        DB::table('materias')->where('idMateria',$id)->update([
+            'nombre' => $request->nombre,            
+        ]);
+        $info = DB::table('materias')->select('*')->where('idMateria',$id)->first();         
+        return redirect()->action('AdministradorController@Materias');
     }
 }

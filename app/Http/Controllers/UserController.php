@@ -85,12 +85,11 @@ class userController extends Controller
         ->join('profesores', 'profesores.user_id' , '=' ,'users.id')
         ->select( 'profesores.idProfesor','profesores.descripcion','profesores.cubiculo', 'profesores.hobbies', 'users.name', 'users.matricula',  'users.email')
         ->where('idProfesor',$id)->first();
-        $formacion_academica = DB::table('formacionacademica')->select('*')->where('idProfesor',$id)->get();
-        $informacion_laboral = DB::table('informacionlaboral')->select('*')->where('idProfesor',$id)->get();
+        $formacion_academica = DB::table('formacionAcademica')->select('*')->where('idProfesor',$id)->get();
+        $informacion_laboral = DB::table('informacionLaboral')->select('*')->where('idProfesor',$id)->get();
         $comentarios = DB::table('comentarios')->select('*')->where('idProfesor',$id)->paginate(3);        
          return view('/Usuario/VerProfesores')
-                ->with('profesores',$profesores)
-    
+                ->with('profesores',$profesores)    
                 ->with('formacion_academica',$formacion_academica)
                 ->with('informacion_laboral',$informacion_laboral)
                 ->with('comentarios',$comentarios);

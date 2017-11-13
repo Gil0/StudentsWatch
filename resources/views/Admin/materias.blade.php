@@ -46,12 +46,35 @@
                 <div align="center">
                 <div class="panel-heading">
 
-                       <button class="btn btn-success" id="nuevaMat" style="width:100%;" value="">Agregar Materia</button>
+                <button class="btn btn-success" id="nuevaMat" style="width:100%;" data-toggle="modal" data-target="#nuevaMateria">Nueva Materia</button>
                </div>
                 </div>
+
+                 <!-- Modal Agregar materia -->
+                    <div class="modal fade" id="nuevaMateria" tabindex="-1" role="dialog" aria-labelledby="Nueva Materia">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Nueva Materia</h4>
+                        </div>
+                        <form action="/Admin/materia/crear/" method="POST">
+                        {{ csrf_field() }} <!-- ESTE TOKEN ES IMPORTANTE PARA PODER ENVIAR DATOS AL SERVER... si no lo incluyes habra error ya que la informacion no es "confiable" -->
+                            <div class="modal-body">
+                                <input type="text" class="form-control" placeholder="materia" name="materia" required><br>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" id="cancelar">Cerrar</button>
+                                <button type="submit" class="btn btn-primary" id="crear">Guardar</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+
                 <div class="panelesp">
                     <div class="panel-body">
-                        <table class="table">
+                        <table class="table table-condensed">
                             <thread class="thead-inverse">
                                 <tr>
                                     <th> <div align="center"># </div></th>
@@ -61,12 +84,13 @@
                                 </tr>
                             </thread>
                             <tbody>
-                            @foreach($materias as $materia)
+                            @if($materias)
+                            @foreach($materias as $materias)
                                 <tr>
-                                 <th scope="row"><div align="center"> {{$materia->idMateria}}</div></th>
-                                 <th><div align="center"> {{$materia->nombre}}</div> </th>
-                                  <th> <div align="center"> <i class="fa fa-pencil-square fa-2x iconpencil" aria-hidden="true" value=""></i></div></th>
-                                <th> <div align="center"> <i class="fa fa-trash fa-2x icondelete" aria-hidden="true" value="{{$materia->idMateria}}"></i></div></th>
+                                 <th scope="row"><div align="center"> {{$materias->idMateria}}</div></th>
+                                 <th><div align="center"> {{$materias->nombre}}</div> </th>
+                                  <th> <div align="center"> <i class="fa fa-pencil-square fa-2x iconpencil" aria-hidden="true" value="{{$materias->idMateria}}"></i></div></th>
+                                <th> <div align="center"> <i class="fa fa-trash fa-2x icondelete" aria-hidden="true" value="{{$materias->idMateria}}"></i></div></th>
                                 </tr>
                              @endforeach
                             </tbody>
@@ -77,29 +101,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="nuevaMateria" tabindex="-1" role="dialog" aria-labelledby="Nueva Materia">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Nueva Materia</h4>
-      </div>
 
-      <form id="formMateria" method="POST">
-
-
-      {{ csrf_field() }} <!-- ESTE TOKEN ES IMPORTANTE PARA PODER ENVIAR DATOS AL SERVER... si no lo incluyes habra error ya que la informacion no es "confiable" -->
-        <div class="modal-body">
-            <input type="text" class="form-control" placeholder="materia" name="materia" required><br>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" id="cancelar">Cerrar</button>
-            <button type="submit" class="btn btn-primary" id="crear">Guardar</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
 
 <!-- modal seguridad eliminar materia-->
 <div class="modal fade" id="eliminarMateria" tabindex="-1" role="dialog" aria-labelledby="Eliminar Profesor">
@@ -119,8 +121,28 @@
   </div>
 </div>
 
- 
-
+<!-- modal Editar materia -->
+<div class="modal fade" id="editarMateria" tabindex="-1" role="dialog" aria-labelledby="Editar Materia">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Editar Materia </h4>
+      </div>
+      <form id="formEditarMateria" action="" method="POST">
+      {{ csrf_field() }} <!-- ESTE TOKEN ES IMPORTANTE PARA PODER ENVIAR DATOS AL SERVER... si no lo incluyes habra error ya que la informacion no es "confiable" -->
+        <div class="modal-body">
+        <input type="text" required placeholder="Nombre de la materia" class="form-control" id="nombre" name="nombre" value="">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="cancelar">Cerrar</button>
+            <button type="submit" class="btn btn-primary" id="crear">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+@endif
 <script>
     $(document).ready(function(){               
         $('i.fa-trash').click(function(){
@@ -128,15 +150,13 @@
            $('form#eliminarMa').attr('action','/Admin/Materia/'+$(this).attr('value')+'/eliminar');
          });
          
-        $('i.fa-pencil-square').click(function(){
-           window.location.href = '/Usuario/Comentarios/'+$(this).attr('value')+'/ver';
+       $('i.fa-pencil-square').click(function(){
+            $('#editarMateria').modal('show'); 
+            $('form#formEditarMateria').attr('action', '/Admin/Materia/'+$(this).attr('value')+'/editar' );
         });
-        $('button#nuevaMat').click(function(){
-            $('#nuevaMateria').modal('show');
-            $('form#formMateria').attr('action', '/Admin/materia/crear/' );
-        });
+      
 
-        
     });
 </script>
+
 @endsection

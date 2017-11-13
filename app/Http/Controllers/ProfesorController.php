@@ -35,7 +35,8 @@ class ProfesorController extends Controller
     {                
         $ID=Crypt::decrypt($id);         
         DB::table('profesores')->where('user_id',$ID)->update([
-            'descripcion' => $request->descripcion,            
+            'descripcion' => $request->descripcion,   
+            'cubiculo' => $request->cubiculo,   
             'hobbies' => $request->hobbies,            
         ]);
         $informacionProfesor = DB::table('profesores')->where('user_id',$ID)->first();                  
@@ -74,15 +75,18 @@ class ProfesorController extends Controller
         return redirect()->action('ProfesorController@miInformacion',['id'=>$ID]);
     }
 
-
-    public function profesores()
-    {
-    $profesores=DB::table('users')
-    ->join('users', 'users.id' , '=' ,'profesores.user_d')
-    ->select('users.name', 'profesores.email', 'profesores.idProfesor', 'profesores.descripcion')
-    ->where('is_profesor',1);
-    return view('/Usuario/profesores')->with('profesores',$profesores);
-
+    public function profesores(){
+        $profesores=DB::table('users')
+            ->join('users', 'users.id' , '=' ,'profesores.user_d')
+            ->select('users.name', 'profesores.email', 'profesores.idProfesor', 'profesores.descripcion')
+            ->where('is_profesor',1);
+        return view('/Usuario/profesores')->with('profesores',$profesores);
     }
-
+    
+    public function misComentarios(Request $request,$id){   
+        $ID=Crypt::decrypt($id);          
+        $informacionProfesor = DB::table('profesores')->where('user_id',$ID)->first();              
+        $comentarios = DB::table('comentarios')->select('*')->where('idProfesor',$informacionProfesor->idProfesor)->where('status',true)->get();        
+        return view('/Profesor/MisComentarios')->with('comentarios',$comentarios);
+    }
 }

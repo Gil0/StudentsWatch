@@ -84,13 +84,29 @@ p {
 }
 </style>
 <div class="container">
-    <div class="navar">
-        <ul class="nav nav-pills"> 
-            <li><a href="{{ url('/login') }}">Inicio</a></li>
-            <li><a href="{{ url('/Profesor/Informacion/'.encrypt(Auth::user()->id)) }}">Mi Informacion</a></li>
-            <li><a href="{{ url('/login') }}">Mis Comentarios</a></li>                                                
-        </ul>
-    </div>
+@if (Auth::user()->is_profesor == true)
+@if (Auth::user()->is_tutor == true)                
+<div class="navar">
+    <ul class="nav nav-pills"> 
+        <li><a href="{{ url('/login') }}">Inicio</a></li>
+        <li><a href="{{ url('/login') }}">Mis Alumnos</a></li>
+        <li><a href="{{ url('/login') }}">Mi Progreso</a></li>
+        <li><a href="{{ url('/Profesor/Informacion/'.encrypt(Auth::user()->id)) }}">Mi Informacion</a></li>
+<li><a href="{{ url('/Profesor/MisComentarios/'.encrypt(Auth::user()->id)) }}">Mis Comentarios</a></li>  
+     </ul>
+</div>
+                                                  
+@else            
+<div class="navar">
+    <ul class="nav nav-pills">
+        <li><a href="{{ url('/login') }}">Inicio</a></li>
+        <li><a href="{{ url('/Profesor/Informacion/'.encrypt(Auth::user()->id)) }}">Mi Informacion</a></li>
+        <li><a href="{{ url('/Profesor/MisComentarios/'.encrypt(Auth::user()->id)) }}">Mis Comentarios</a></li>                                                
+      </ul>
+</div>
+                                              
+@endif
+@endif
     <div class="row">
         <div class="col-12 col-md-12">
 
@@ -117,6 +133,22 @@ p {
                                         </div>  
                                     @endif
 
+                                    @if($informacionProfesor->cubiculo==null)
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Cubículo</label>
+                                            <div class="col-sm-10">                                                                                                                                                                        
+                                                <input type="text" class="form-control" id="cubiculo" name="cubiculo" value="{{$informacionProfesor->cubiculo}}" placeholder="Ingrese su Cubículo...">                                                
+                                            </div>
+                                        </div>                       
+                                    @else
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Cubículo</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="cubiculo" name="cubiculo" value="{{$informacionProfesor->cubiculo}}">
+                                            </div>
+                                        </div>  
+                                    @endif
+                                    
                                     @if($informacionProfesor->hobbies==null)
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Hobbies</label>

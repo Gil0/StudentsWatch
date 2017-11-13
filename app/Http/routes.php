@@ -53,6 +53,7 @@ Route::post('/Profesor/Informacion/academica/crear',['middleware' => 'profesor',
 Route::post('/Profesor/Informacion/laboral/crear',['middleware' => 'profesor', 'uses' => 'ProfesorController@informacionLaboral']);
 Route::post('/Profesor/Informacion/academica/{id}/eliminar',['middleware' => 'profesor', 'uses' => 'ProfesorController@eliminarInformacionAcademica']);
 Route::post('/Profesor/Informacion/laboral/{id}/eliminar', ['middleware' => 'profesor', 'uses' => 'ProfesorController@eliminarInformacionLaboral']);
+Route::get('/Profesor/MisComentarios/{id}',  ['middleware' => 'profesor', 'uses' => 'ProfesorController@misComentarios']);
 /*
 |--------------------------------------------------------------------------
 | Rutas de Administradores
@@ -78,3 +79,4 @@ Route::post('/Admin/materia/crear/',  ['middleware' => 'administrador', 'uses' =
 Route::post('/Admin/Materia/{id}/eliminar', 'AdministradorController@eliminarMateria');
 Route::get('/Admin/Alumnos',  ['middleware' => 'administrador', 'uses' => 'AdministradorController@Alumnos']);
 Route::post('/Admin/Alumno/{id}/eliminar', 'AdministradorController@eliminarAlumno');
+Route::post('/Admin/Materia/{id}/editar','AdministradorController@editarMateria');
