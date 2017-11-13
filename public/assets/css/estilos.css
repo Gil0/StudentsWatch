@@ -47,7 +47,7 @@ body {
    
       /*font-style:italic;*/
       font-weight:bold;
-      font-size:2em;
+      font-size:1em;
       color: white;
       
       font-family:'Gill Sans', 'Times New Roman''Helvetica','Verdana','Monaco',sans-serif;
@@ -67,6 +67,9 @@ body {
 }
 img.pequeñita{
     width: 100px; 
+  }
+  img.pequeñita1{
+	width: 80px;
   }
 img.pequeña{
 	padding-left: -50px;
@@ -102,7 +105,7 @@ img.pequeña{
   }
   #contenedor 
   {
-	  width:800px;
+	  width:800px ;
 	  margin: 30px auto;
 	  overflow: hidden; /*oculta las imagenes*/ 
   }
@@ -290,91 +293,302 @@ img.pequeña{
 }
  /*finSlider*/
  /*FOOTER*/
+ /*FOOTER*/
  footer {
-    background:#02131E;
-    
-    padding-top: 50px;
-    padding-right: 30px;
-    padding-bottom: 30px;
-    padding-left: 80px;
-   /* padding: 40px 0px;*/
-  /*  margin: 0px  0px 500px 20px;*/
-  height: 150px;
-  position: relative;
-  bottom: -300px;
-
-  
+	display:block;
+   background: #00171F;
+   color: #FFF;
+/* height: 150px;
+ position: absolute;
+ bottom: 0;
+ width: 100%;*/
+ position:fixed;
+ left:0px;
+ bottom:-50px;
+ height:20%;
+ width:100%;
+ 
+align-self: flex-end;
+text-align: center;
 }
 
 footer .nav a {
-    width: 100%;
-    display: block;
-    padding: -200px;
-    color: #FFF;
-    text-decoration: none;
-    border-bottom: 1px solid #02131E;
-    font-size: 13px;
- 
+   width: 100%;
+   display: block;
+   padding: -200px;
+   color: #FFF;
+   text-decoration: none;
+   border-bottom: 1px solid rgba(255,255,255,.2);
+   font-size: 13px;
+
 }
 
 footer .container .row ul {
-   padding-left: 20px;
-    list-style: none;
+  padding-left: 20px;
+   list-style: none;
 }
 /*
 footer .nav a:hover {
-    text-decoration: underline;
+   text-decoration: underline;
 }*/
 
 footer .logo {
-    background: #4591E1;
-    color: #FFF;
-    padding: 25px;
-    font-weight: 50px;
-    border-radius: 0 30px 0 30px;
-    font-size: 10px;
-    text-align: center;
-    padding-top: 5px;	
-    
+   background: #003459;
+   color: #FFF;
+   padding: 25px;
+   font-weight: 50px;
+   border-radius: 0 30px 0 30px;
+   font-size: 10px;
+   text-align: center;
+   padding-top: 5px;
+   
 }
- /*FOOTER*/
- /*margen del div usuario*/
+/*FOOTER*/
+.espacio{
+	padding-bottom: .25cm; 
+}
+
+* {
+   box-sizing: border-box;
+}
+
+@media (max-width: 1000px){
+   header{
+	   /* Reverse the axis of the header, making it vertical. */
+	   flex-direction: column;
+
+	   /* Align items to the begining (the left) of the header. */
+	   align-items: flex-start;
+   }
+}
+
+
+@media (max-width: 1000px){
+   panel{
+		   /* Reverse the axis of the header, making it vertical. */
+		   flex-direction: column;
+		   
+		   /* Align items to the begining (the left) of the header. */
+		   align-items: flex-start;
+
+			/* Spread out the elements inside the header. */
+			justify-content: space-between;
+			/* Align items vertically in the center. */
+			align-items: center;
+		 
+   }
+}
+
+@media (max-width: 400px){
+	letra{
+			/* Reverse the axis of the header, making it vertical. */
+			flex-direction: column;
+			
+			/* Align items to the begining (the left) of the header. */
+			align-items: flex-start;
  
- .logindiv { 
-	float: left; 
-	margin: 40px 80px 0 -90px; 
-	overflow: hidden; 
-	padding: 0; 
-	width: 980px; 
+			 /* Spread out the elements inside the header. */
+			 justify-content: space-between;
+			 /* Align items vertically in the center. */
+			 align-items: left;
+		  
 	}
-	 
-	.logindiv1 { 
-		float: left; 
-		margin: 40px 80px 0 90px; 
-		overflow: hidden; 
-		padding: 0; 
-		width: 980px; 
-		}
-		.logindiv2 { 
-			float: left; 
-			margin: 40px 80px 0 50px; 
-			overflow: hidden; 
-			padding: 0; 
-			width: 980px; 
-			}
-			.logindiv3 { 
-				float: left; 
-				margin: 40px 80px 0 -30px; 
-				overflow: hidden; 
-				padding: 0; 
-				width: 980px; 
-				}
-				.logindiv4 { 
-					float: left; 
-					margin: 40px 80px 0 75px; 
-					overflow: hidden; 
-					padding: 0; 
-					width: 980px; 
-					}
+ }
+
+@media (max-width: 1000px){
+	navar{
+			/* Reverse the axis of the header, making it vertical. */
+			flex-direction: column;
+			
+			/* Align items to the begining (the left) of the header. */
+			align-items: flex-start;
  
- /**/
+			 /* Spread out the elements inside the header. */
+			 justify-content: space-between;
+			 /* Align items vertically in the center. */
+			 align-items: center;
+		  
+	}
+ }
+
+
+
+
+@media (max-width: 1000px){
+   intro{
+		   /* Reverse the axis of the header, making it vertical. */
+		   flex-direction: column;
+		   
+		   /* Align items to the begining (the left) of the header. */
+		   align-items: flex-start;
+
+			/* Spread out the elements inside the header. */
+			justify-content: space-between;
+			/* Align items vertically in the center. */
+			align-items: center;
+		 
+   }
+}
+@media (max-width: 1000px){
+   thead-inverse{
+		   /* Reverse the axis of the header, making it vertical. */
+		   flex-direction: column;
+		   
+		   /* Align items to the begining (the left) of the header. */
+		   align-items: flex-start;
+
+			/* Spread out the elements inside the header. */
+			justify-content: space-between;
+			/* Align items vertically in the center. */
+			align-items: center;
+		 
+   }
+}
+
+@media (max-width: 1000px){
+   table{
+		   /* Reverse the axis of the header, making it vertical. */
+		   flex-direction: column;
+		   
+		   /* Align items to the begining (the left) of the header. */
+		   align-items: flex-start;
+
+			/* Spread out the elements inside the header. */
+			justify-content: space-between;
+			/* Align items vertically in the center. */
+			align-items: center;
+		 
+   }
+}
+
+/*
+contenedor{
+	margin-left:50px;
+	 height: 80px;
+	 margin: auto; 
+ 
+	  
+	  /* Spread out the elements inside the header. */
+	  justify-content: space-between;
+	   /* Align items vertically in the center. */
+	   align-items: center;
+	
+ }
+*/
+.cuadros{
+   margin-left:50px;
+	height: 150px;
+	margin: auto; 
+
+	 
+	 /* Spread out the elements inside the header. */
+	 justify-content: space-between;
+	  /* Align items vertically in the center. */
+	  align-items: center;
+   
+}
+.cuadro1{
+   border: 1px solid black;
+   width:320px;
+   /*
+   margin-top: 3px;
+   margin-bottom: 0px;
+   margin-right: 0px;
+   margin-left: 80px;*/
+}
+
+.cuadro2{
+   border: 1px solid black;
+   width:320px;/*
+   margin-top: 242px;
+   margin-bottom: 100px;
+   margin-right: 0px;
+   margin-left: 0px;*/
+}
+
+.cuadro3{
+   border: 1px solid black;
+   width:320px;/*
+   margin-top: 315px;
+   margin-bottom: 100px;
+   margin-right: 0px;
+   margin-left: -380px;*/
+}
+.cuadro4{
+   border: 1px solid black;
+   width:320px;
+/*	margin-top: 190px;
+   margin-bottom: 100px;
+   margin-right: 0px;
+   margin-left: 0px;*/
+}
+.cuadro5{
+   border: 1px solid black;
+      width:320px;
+/*	margin-top: 235px;
+   margin-bottom: 100px;
+   margin-right: 0px;
+   margin-left: 0px;*/
+}
+
+@media screen and (max-width: 450px) {
+   #main #sidebar  {display:block; float:none !important; width:100%; position:absolute; top:-80px; margin:0 !important; border-bottom:1px solid #aaa; padding:0 0 20px 0;}
+   #main #content {float:none; width:auto; margin:100px 0 0 0; }
+ }
+ @media screen and (max-width: 400px) {
+   #main {position:relative; width:100%; }
+   #panel{margin-top:80px; width:100%; float:none;}
+ }
+
+ @media all and (max-width: 600px){
+   cuadros{
+	   width:100%;
+	   height:auto;
+	   margin-left:10px;
+   }
+}
+
+
+@media all and (max-width: 600px){
+	collapse{
+		display: block;
+		width:20%;
+		height:auto;
+		margin-left:-50px;
+	}
+ }
+
+ .navbar-right{
+	 height: auto;
+	 padding-left: -60px; 
+     font-size: 1em;
+	  
+	  /* Spread out the elements inside the header. */
+  
+	   /* Align items vertically in the center. */
+	   float: left;
+	
+ }
+ /*
+
+ @media screen and (max-width: 400px) {
+	#letra {position:relative; width:50%; }
+	#panel{margin-top:80px; width:100%; float:none;}
+  }
+
+/*
+  @media all and (max-width: 600px){
+	contenedor{
+		width:80px;
+		height:80px;
+		margin-left:-50px;
+	}
+ }
+ 
+*/
+
+
+ #main #content {float:left; width:63.9880952%; margin:30px 0 0 1.98412698%; }
+ #main #content * {max-width:100%}
+ #main #sidebar {float:left; margin:20px 0 0 3.47222222%; width:28.7698413%; }
+ #main #sidebar * {max-width:100%}

@@ -1,3 +1,7 @@
+
+<div class="fondo">
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -5,15 +9,20 @@
 @if(Auth::guest())
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-default posicion">
-            <center><div class="panel-heading intro">Bienvenido...</div></center>
+        <div class="panel panel-default ">
+            <center><div class="panel-heading intro">Bienvenido</div></center>
                 <div class="panel-body ">
                     <center>Hola Usuario no registrado.</center>
                 </div>
             </div>
         </div>
     </div>
+
+    
+     
+       
 </div>  
+
 
 <!------ Slider ------------>
 <div id ="contenedor">
@@ -27,7 +36,23 @@
          </div>
          
   <!------End Slider ------------>    
-@else
+
+
+  
+
+  <!--CUADROS-->
+  <div class="col-2 menu">
+                    <div class"cuadros" align="center">
+                         <a href="{{ url('http://www.cs.buap.mx/') }}"><img class="cuadro1" src="../assets/img/Cs.png"></a>
+                         <a href="{{ url('http://www.autoservicios.buap.mx') }}"><img class="cuadro3" src="../assets/img/auto.png"></a>
+                         <a href="{{ url('http://www.becas.buap.mx/') }}"><img class="cuadro4" src="../assets/img/becas.png"></a>
+                         <a href="{{ url('http://cmas.siu.buap.mx/portal_pprd/wb/Servicio_Social/inicio') }}"><img class="cuadro5" src="../assets/img/ss.png"></a>
+
+                    </div>
+                </div>
+        <!--FIN CUADROS-->
+
+  @else
     @if (Auth::user()->is_admin == true)
         @if (Auth::user()->is_profesor == true)                                                        
             @if (Auth::user()->is_tutor == true)                
@@ -90,7 +115,7 @@
             <div class="row intro logindiv1">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="panel panel-default">
-                       <center> <div class="panel-heading">Bienvenido  ... </div></center>
+                       <center> <div class="panel-heading">Bienvenido </div></center>
                             <div class="panel-body">
                                <center> Hola Administrador.</center>
                             </div>
