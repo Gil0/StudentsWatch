@@ -34,7 +34,7 @@
     </div>
     
 
-    <div class="col-sm-9 logindiv2" >
+    <div class="col-sm-12 logindiv2" >
         <div align="center" >
         <p class="profesor">Comentarios</p>
         </div> 
@@ -51,24 +51,25 @@
                 </tr>
               </thread>
               <tbody>
-              @foreach($comentarios as $comentarios)
+              @foreach($comentarios as $comentario)
                 <tr class="rowsTabla">
-                  <th scope="row">{{$comentarios->idComentario}}</th>
-                  <th id="comentario">{{$comentarios->comentario}}</th>
-                  <th>{{$comentarios->calificacion}}</th>
+                  <th scope="row">{{$comentario->idComentario}}</th>
+                  <th id="comentario">{{$comentario->comentario}}</th>
+                  <th>{{$comentario->calificacion}}</th>
                   <th class="text-center">
                   <!-- Single button -->
                   <div class="btn-group">
-                    <button type="button" class="btn statusBtn" style="width:200%;" id="{{$comentarios->idComentario}}" value="{{$comentarios->status}}">
+                    <button type="button" class="btn statusBtn" style="width:200%;" id="{{$comentario->idComentario}}" value="{{$comentario->status}}">
                       <i class="fa fa-bullseye" aria-hidden="true"></i>
                     </button>
                   </div>
                   </th>
-                  <th> <div align="center"> <i class="fa fa-trash fa-2x icondelete" aria-hidden="true" value="{{$comentarios->idComentario}}"></i></div></th>
+                  <th> <div align="center"> <i class="fa fa-trash fa-2x icondelete" aria-hidden="true" value="{{$comentario->idComentario}}"></i></div></th>
                 </tr>
                 @endforeach
               </tbody>
             </table>
+            <div align="center"> {!! $comentarios -> render() !!}</div>
           </div>
         </div>
       </div>
