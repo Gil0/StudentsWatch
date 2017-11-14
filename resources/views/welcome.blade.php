@@ -43,10 +43,10 @@
   <!--CUADROS-->
   <div class="col-2 menu">
                     <div class"cuadros" align="center">
-                         <a href="{{ url('http://www.cs.buap.mx/') }}"><img class="cuadro1" src="../assets/img/Cs.png"></a>
-                         <a href="{{ url('http://www.autoservicios.buap.mx') }}"><img class="cuadro3" src="../assets/img/auto.png"></a>
-                         <a href="{{ url('http://www.becas.buap.mx/') }}"><img class="cuadro4" src="../assets/img/becas.png"></a>
-                         <a href="{{ url('http://cmas.siu.buap.mx/portal_pprd/wb/Servicio_Social/inicio') }}"><img class="cuadro5" src="../assets/img/ss.png"></a>
+                         <a target="blank" href="{{ url('http://www.cs.buap.mx/') }}"><img class="cuadro1" src="../assets/img/Cs.png"></a>
+                         <a target="blank" href="{{ url('http://www.autoservicios.buap.mx') }}"><img class="cuadro3" src="../assets/img/auto.png"></a>
+                         <a target="blank" href="{{ url('http://www.becas.buap.mx/') }}"><img class="cuadro4" src="../assets/img/becas.png"></a>
+                         <a target="blank" href="{{ url('http://cmas.siu.buap.mx/portal_pprd/wb/Servicio_Social/inicio') }}"><img class="cuadro5" src="../assets/img/ss.png"></a>
 
                     </div>
                 </div>
