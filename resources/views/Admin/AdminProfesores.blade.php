@@ -56,19 +56,20 @@
                                     </tr>
                                 </thread>
                                 <tbody>
-                                    @foreach($profesores as $profesores)
+                                    @foreach($profesores as $profesor)
                                     <tr>
-                                    <!--   <th><center>{{$profesores->idProfesor}}</center></th> -->
-                                        <th><center>{{$profesores->name}}</center></th>
-                                        <th><center>{{$profesores->matricula}}</center></th>
-                                        <th><center><i class="fa fa-info-circle fa-2x" aria-hidden="true" value="{{$profesores->idProfesor}}"></i></center></th>
-                                        <th><center><i class="fa fa-commenting fa-2x" aria-hidden="true" value="{{$profesores->idProfesor}}"></i></center></th>
-                                        <th><center> <i class="fa fa-trash fa-2x fa-align-center" aria-hidden="true" value="{{$profesores->id}}"></i> </center></th>
-                                        <th><center><i class="fa fa-graduation-cap fa-2x" aria-hidden="true" id="{{$profesores->id}}" value="{{$profesores->is_tutor}}"></i></center></th>
+                                    <!--   <th><center>{{$profesor->idProfesor}}</center></th> -->
+                                        <th><center>{{$profesor->name}}</center></th>
+                                        <th><center>{{$profesor->matricula}}</center></th>
+                                        <th><center><i class="fa fa-info-circle fa-2x" aria-hidden="true" value="{{$profesor->idProfesor}}"></i></center></th>
+                                        <th><center><i class="fa fa-commenting fa-2x" aria-hidden="true" value="{{$profesor->idProfesor}}"></i></center></th>
+                                        <th><center> <i class="fa fa-trash fa-2x fa-align-center" aria-hidden="true" value="{{$profesor->id}}"></i> </center></th>
+                                        <th><center><i class="fa fa-graduation-cap fa-2x" aria-hidden="true" id="{{$profesor->id}}" value="{{$profesor->is_tutor}}"></i></center></th>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div align="center"> {!! $profesores -> render() !!}</div>
                         </div>
                     </div>
 

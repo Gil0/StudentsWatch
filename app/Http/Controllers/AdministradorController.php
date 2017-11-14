@@ -27,7 +27,7 @@ class AdministradorController extends Controller
         $profesores=DB::table('users')
         ->join('profesores', 'profesores.user_id' , '=' ,'users.id')
         ->select( 'profesores.*', 'users.*')
-        ->get();
+        ->paginate(8);
        // dd($profesores);
         return view('/Admin/AdminProfesores',['profesores'=>$profesores]);       
     }
