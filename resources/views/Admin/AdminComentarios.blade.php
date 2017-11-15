@@ -59,7 +59,7 @@
                   <th class="text-center">
                   <!-- Single button -->
                   <div class="btn-group">
-                    <button type="button" class="btn statusBtn" style="width:200%;" id="{{$comentario->idComentario}}" value="{{$comentario->status}}">
+                    <button type="button" class="btn statusBtn" style="width:200%;" id="{{$comentario->idComentario}}" value="{{$comentario->status}}" name="{{$comentario->idProfesor}}">
                       <i class="fa fa-bullseye" aria-hidden="true"></i>
                     </button>
                   </div>
@@ -168,7 +168,8 @@
                  type:'POST',
                  dataType:'json',
                  data:{
-                     'status': $(this).attr('value')
+                     'status': $(this).attr('value'),
+                     'idProfesor': $(this).attr('name')
                  },beforeSend: function (xhr) {                                      //Antes de enviar la peticion AJAX se incluye el csrf_token para validar la sesion.
                     var token = $('meta[name="csrf_token"]').attr('content');
 

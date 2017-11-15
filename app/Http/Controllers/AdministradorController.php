@@ -35,6 +35,25 @@ class AdministradorController extends Controller
     public function cambiarStatus(Request $request, $id)
     {
         $evento = DB::table('comentarios')->where('idComentario',$id)->update(['status' => $request->status]);
+
+        /**
+         * Asignar calificacion
+         */
+        $comentarios= DB::table('comentarios')
+            ->where('idProfesor',$request->idProfesor)
+            ->where('status',1)
+            ->get();
+        if($comentarios){
+            $Ncomentarios = count($comentarios);
+            $suma=0;
+            foreach ($comentarios as $comentarios) {
+                $suma+=$comentarios->calificacion;
+            }
+            $calificacion=$suma/$Ncomentarios;
+        }else{
+            $calificacion=0;
+        }
+        $AsignarCalificacion = DB::table('profesores')->where('idProfesor',$request->idProfesor)->update(['calificacion' => $calificacion]);
         return json_encode('Se actualizó el status correctamente');
     }
 

@@ -186,7 +186,7 @@ p {
                                         <p class="success">Calificación: {{$informacionProfesor->calificacion}}</p>
                                         <p class="success">Regular</p>
                                     @elseif($informacionProfesor->calificacion>7.5 && $informacionProfesor->calificacion<=8.5)
-                                        <img src="{{URL::asset('/assets/img/bueno .png')}}" alt="CalificacionProfesor" class="calificacionProfesor"/>                                                                   
+                                        <img src="{{URL::asset('/assets/img/bueno.png')}}" alt="CalificacionProfesor" class="calificacionProfesor"/>                                                                   
                                         <p class="success">Calificación: {{$informacionProfesor->calificacion}}</p>
                                         <p class="success">Bueno</p>
                                     @else
