@@ -106,10 +106,10 @@
             <div class="navar">
                 <ul class="nav nav-pills">
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
-                    <li><a href="{{ url('/login') }}">Mi Mapa Curricular</a></li>
-                    <li><a href="{{ url('/login') }}">Mi Progreso</a></li>
+                    <li><a href="{{ url('/Usuario/Mimapa/'.encrypt(Auth::user()->id)) }}">Mi Mapa Curricular</a></li>
+                    <li><a href="{{ url('/Usuario/Progreso/'.encrypt(Auth::user()->id)) }}">Mi Progreso</a></li>
                     <li><a href="{{ url('/Usuario/Profesores') }}">Ver Profesores</a></li>
-                    <li><a href="{{ url('/login') }}">Ver Comentarios</a></li>
+                    <li><a href="{{ url('/Usuario/Materias') }}">Ver materias</a></li>
                  </ul>
             </div>
                                                              
