@@ -10,14 +10,15 @@ body {
 .header-top{
 	padding:1% 0;
 }
+/*
 .header-bottom{
 	padding:1% 0;
 	background:rgba(51, 51, 51, 0.22);
 	text-align: center;
-}
+} */
 .posicion
 {
-    border: 2px solid #CCC;
+    border: 2px solid white;
     padding: 1em;
     margin: 1em 0 1em 4em;
     width: 800px;
@@ -295,18 +296,14 @@ img.pequeña{
  /*FOOTER*/
  /*FOOTER*/
  footer {
-	display:block;
+   display:block;
    background: #00171F;
    color: #FFF;
-/* height: 150px;
- position: absolute;
- bottom: 0;
- width: 100%;*/
- position:fixed;
- left:0px;
- bottom:-50px;
- height:20%;
- width:100%;
+   position:fixed;
+   left:0px;
+   bottom:-50px;
+   height:20%;
+   width:100%;
  
 align-self: flex-end;
 text-align: center;
@@ -318,19 +315,14 @@ footer .nav a {
    padding: -200px;
    color: #FFF;
    text-decoration: none;
-   border-bottom: 1px solid rgba(255,255,255,.2);
    font-size: 13px;
-
 }
 
 footer .container .row ul {
   padding-left: 20px;
    list-style: none;
 }
-/*
-footer .nav a:hover {
-   text-decoration: underline;
-}*/
+
 
 footer .logo {
    background: #003459;
@@ -361,6 +353,20 @@ footer .logo {
 	   align-items: flex-start;
    }
 }
+
+
+/*<!--Footer responsive -->*/
+
+@media (max-width: 480){
+	footer{
+		/* Reverse the axis of the header, making it vertical. */
+		flex-direction: column;
+ 
+		/* Align items to the begining (the left) of the header. */
+		align-items: flex-start;
+	}
+ }
+
 
 
 @media (max-width: 1000px){
@@ -558,17 +564,7 @@ contenedor{
 	}
  }
 
- .navbar-right{
-	 height: auto;
-	 padding-left: -60px; 
-     font-size: 1em;
-	  
-	  /* Spread out the elements inside the header. */
-  
-	   /* Align items vertically in the center. */
-	   float: left;
-	
- }
+
  /*
 
  @media screen and (max-width: 400px) {
