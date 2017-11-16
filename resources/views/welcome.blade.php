@@ -43,10 +43,10 @@
   <!--CUADROS-->
   <div class="col-2 menu">
                     <div class"cuadros" align="center">
-                         <a href="{{ url('http://www.cs.buap.mx/') }}"><img class="cuadro1" src="../assets/img/Cs.png"></a>
-                         <a href="{{ url('http://www.autoservicios.buap.mx') }}"><img class="cuadro3" src="../assets/img/auto.png"></a>
-                         <a href="{{ url('http://www.becas.buap.mx/') }}"><img class="cuadro4" src="../assets/img/becas.png"></a>
-                         <a href="{{ url('http://cmas.siu.buap.mx/portal_pprd/wb/Servicio_Social/inicio') }}"><img class="cuadro5" src="../assets/img/ss.png"></a>
+                         <a target="blank" href="{{ url('http://www.cs.buap.mx/') }}"><img class="cuadro1" src="../assets/img/Cs.png"></a>
+                         <a target="blank" href="{{ url('http://www.autoservicios.buap.mx') }}"><img class="cuadro3" src="../assets/img/auto.png"></a>
+                         <a target="blank" href="{{ url('http://www.becas.buap.mx/') }}"><img class="cuadro4" src="../assets/img/becas.png"></a>
+                         <a target="blank" href="{{ url('http://cmas.siu.buap.mx/portal_pprd/wb/Servicio_Social/inicio') }}"><img class="cuadro5" src="../assets/img/ss.png"></a>
 
                     </div>
                 </div>
@@ -171,10 +171,10 @@
             <div class="navar">
                 <ul class="nav nav-pills">
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
-                    <li><a href="{{ url('/login') }}">Mi Mapa Curricular</a></li>
-                    <li><a href="{{ url('/login') }}">Mi Progreso</a></li>
+                    <li><a href="{{ url('/Usuario/Mimapa/'.encrypt(Auth::user()->id)) }}">Mi Mapa Curricular</a></li>
+                    <li><a href="{{ url('/Usuario/Progreso/'.encrypt(Auth::user()->id)) }}">Mi Progreso</a></li>
                     <li><a href="{{ url('/Usuario/Profesores') }}">Ver Profesores</a></li>
-                    <li><a href="{{ url('/login') }}">Ver Comentarios</a></li>
+                    <li><a href="{{ url('/Usuario/Materias') }}">Ver materias</a></li>
                  </ul>
             </div>
             <div class="row">

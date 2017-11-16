@@ -94,10 +94,10 @@
             <div class="navar">
                 <ul class="nav nav-pills">
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
-                    <li><a href="{{ url('/login') }}">Mi Mapa Curricular</a></li>
-                    <li><a href="{{ url('/login') }}">Mi Progreso</a></li>
+                    <li><a href="{{ url('/Usuario/Mimapa/'.encrypt(Auth::user()->id)) }}">Mi Mapa Curricular</a></li>
+                    <li><a href="{{ url('/Usuario/Progreso/'.encrypt(Auth::user()->id)) }}">Mi Progreso</a></li>
                     <li><a href="{{ url('/Usuario/Profesores') }}">Ver Profesores</a></li>
-                    <li><a href="{{ url('/login') }}">Ver Comentarios</a></li>
+                    <li><a href="{{ url('/Usuario/Materias') }}">Ver materias</a></li>
                  </ul>
             </div>
                                                              
@@ -129,14 +129,14 @@
                                     <th>
                                         <div class="panel-heading">
 
-                                            <button class="btn btn-success" id="nuevaMateriaCursada" style="width:100%;" value="{{$materias->idMateria}}">Agregar Materia aprobada</button>
+                                            <button class="btn btn-success" id="nuevaMateriaCursada" id1="{{$materias->nombre}}" style="width:100%;" value="{{$materias->idMateria}}">Agregar Materia aprobada</button>
                                         </div>
                                     </th>
 
                                     <th>
                                         <div class="panel-heading">
 
-                                            <button class="btn btn-success" id="materiaEnCurso" style="width:100%;" value="{{$materias->idMateria}}">Agregar materia en curso</button>
+                                            <button class="btn btn-success materiaEnCurso" id="{{$materias->nombre}}" style="width:100%;" value="{{$materias->idMateria}}">Agregar materia en curso</button>
                                         </div>
                                     </th>
 
@@ -167,6 +167,7 @@
            <p>hola {{Auth::user()->name}} estás seguro de que deseas agregar esta materia a tus materias cursadas </p>
            
             <input type="hidden" name="user" value="{{Auth::user()->id}}">
+          
         </div>
         <div class="modal-footer">
         <button type="submit" class="btn btn-primary" id="crearMateriaCursada">Agregar Materia</button>
@@ -186,21 +187,14 @@
         $('i.fa-pencil-square').click(function(){
            window.location.href = '/Usuario/Comentarios/'+$(this).attr('value')+'/ver';
         });
-        $('button#btn-success').click(function(){
+        $('button#nuevaMateriaCursada').click(function(){
             $('#MateriaCursada').modal('show');
-            $('form#formMateriaCursada').attr('action', '/user/MateriaCursada/crear/'+$(this).attr('value') );
+            $('form#formMateriaCursada').attr('action', '/user/MateriaCursada/crear/'+$(this).attr('value') + '/' +$(this).attr('id1')  );
         });
 
         $('button#materiaEnCurso').click(function(){
             $('#MateriaCursada').modal('show');
-            $('form#formMateriaCursada').attr('action', '/user/MateriaCursada/crear/'+$(this).attr('value') );
-        });
-
-        $("button.btn-success").click(function(){
-            $(this).removeClass("btn-success");
-            $(this).addClass("btn-help");
-            $(this).hide();
-
+            $('form#formMateriaCursada').attr('action', '/user/MateriaCursada/crear/'+$(this).attr('value')+ '/' +$(this).attr('id1') );
         });
 
         $("#cancelar").click(function(){

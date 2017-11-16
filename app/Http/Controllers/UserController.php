@@ -61,7 +61,7 @@ class userController extends Controller
   $profesores=DB::table('users')
             ->join('profesores', 'profesores.user_id' , '=' ,'users.id')
             ->select( 'profesores.idProfesor', 'users.name', 'users.email')
-            ->get();
+            ->paginate(4);
             //dd($profesores);
             return view('/Usuario/Profesores')->with('profesores',$profesores);
     }
@@ -83,7 +83,7 @@ class userController extends Controller
     public function verProfesor(Request $request, $id){
         $profesores=DB::table('users')
         ->join('profesores', 'profesores.user_id' , '=' ,'users.id')
-        ->select( 'profesores.idProfesor','profesores.descripcion','profesores.cubiculo', 'profesores.hobbies', 'users.name', 'users.matricula',  'users.email')
+        ->select( 'profesores.idProfesor','profesores.descripcion','profesores.cubiculo', 'profesores.hobbies', 'users.name', 'users.matricula',  'users.email','profesores.calificacion')
         ->where('idProfesor',$id)->first();
         $formacion_academica = DB::table('formacionAcademica')->select('*')->where('idProfesor',$id)->get();
         $informacion_laboral = DB::table('informacionLaboral')->select('*')->where('idProfesor',$id)->get();
@@ -101,16 +101,41 @@ public function materias(){
               return view('Usuario.materias', ['materias' => $materias]);
       }
 
-public function agregarMateriaCursada(Request $request, $id){
+public function agregarMateriaCursada(Request $request, $id, $nombre){
     DB::table('alumno_cursos')->insert([
 
        'idMateria' => $id,
        'User_id' => $request->user,
+       'nombre' => $nombre,
        'cursando' => false,
       
    ]);
 
   return redirect()->action('UserController@materias');
+}
+
+public function graficaAvance(Request $request, $id)
+{
+    $ID=Crypt::decrypt($id);  
+    $materias = DB::table('alumno_cursos')->select('user_id', 'idMateria')->distinct()->where('user_id', '=', $ID)->get();
+    $num = count($materias);   
+    //dd($materias);
+    //dd($num);
+    return view('Usuario/avanceGrafica')
+    ->with('materias',$materias)
+    ->with('num',$num); 
+}
+
+public function mapaAlumno(Request $request, $id)
+{
+    $ID=Crypt::decrypt($id);  
+    $materias = DB::table('alumno_cursos')->select('user_id', 'idMateria', 'nombre' )->distinct()->where('user_id', '=', $ID)->get();
+    //$num = count($materias);   
+    //dd($materias);
+    //dd($num);
+    return view('Usuario/mapaAlumno')
+    ->with('materias',$materias);
+   // ->with('num',$num); 
 }
 
 }

@@ -27,7 +27,7 @@ class AdministradorController extends Controller
         $profesores=DB::table('users')
         ->join('profesores', 'profesores.user_id' , '=' ,'users.id')
         ->select( 'profesores.*', 'users.*')
-        ->get();
+        ->paginate(8);
        // dd($profesores);
         return view('/Admin/AdminProfesores',['profesores'=>$profesores]);       
     }
@@ -35,11 +35,30 @@ class AdministradorController extends Controller
     public function cambiarStatus(Request $request, $id)
     {
         $evento = DB::table('comentarios')->where('idComentario',$id)->update(['status' => $request->status]);
+
+        /**
+         * Asignar calificacion
+         */
+        $comentarios= DB::table('comentarios')
+            ->where('idProfesor',$request->idProfesor)
+            ->where('status',1)
+            ->get();
+        if($comentarios){
+            $Ncomentarios = count($comentarios);
+            $suma=0;
+            foreach ($comentarios as $comentarios) {
+                $suma+=$comentarios->calificacion;
+            }
+            $calificacion=$suma/$Ncomentarios;
+        }else{
+            $calificacion=0;
+        }
+        $AsignarCalificacion = DB::table('profesores')->where('idProfesor',$request->idProfesor)->update(['calificacion' => $calificacion]);
         return json_encode('Se actualizó el status correctamente');
     }
 
     public function comentarios(){
-         $comentarios = DB::table('comentarios')->select('*')->get();
+         $comentarios = DB::table('comentarios')->select('*')->paginate(8);
         return view('/Admin/AdminComentarios',['comentarios'=>$comentarios]);
      }
 
@@ -60,7 +79,7 @@ class AdministradorController extends Controller
     public function verProfesor(Request $request, $id){
         $profesores=DB::table('users')
         ->join('profesores', 'profesores.user_id' , '=' ,'users.id')
-        ->select( 'profesores.idProfesor','profesores.descripcion','profesores.cubiculo', 'profesores.hobbies', 'users.name', 'users.matricula',  'users.email')
+        ->select( 'profesores.idProfesor','profesores.descripcion','profesores.cubiculo', 'profesores.hobbies', 'users.name', 'users.matricula',  'users.email','profesores.calificacion')
         ->where('idProfesor',$id)->first();
         $formacion_academica = DB::table('formacionAcademica')->select('*')->where('idProfesor',$id)->get();
         $informacion_laboral = DB::table('informacionLaboral')->select('*')->where('idProfesor',$id)->get();

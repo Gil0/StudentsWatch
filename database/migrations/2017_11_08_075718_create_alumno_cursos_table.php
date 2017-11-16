@@ -16,6 +16,7 @@ class CreateAlumnoCursosTable extends Migration
            // $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('idMateria')->unsigned();
+            $table->string('nombre');
             $table->boolean('cursando',false);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('idMateria')->references('idMateria')->on('materias')->onDelete('cascade');
