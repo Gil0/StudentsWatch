@@ -79,7 +79,7 @@ class AdministradorController extends Controller
     public function verProfesor(Request $request, $id){
         $profesores=DB::table('users')
         ->join('profesores', 'profesores.user_id' , '=' ,'users.id')
-        ->select( 'profesores.idProfesor','profesores.descripcion','profesores.cubiculo', 'profesores.hobbies', 'users.name', 'users.matricula',  'users.email')
+        ->select( 'profesores.idProfesor','profesores.descripcion','profesores.cubiculo', 'profesores.hobbies', 'users.name', 'users.matricula',  'users.email','profesores.calificacion')
         ->where('idProfesor',$id)->first();
         $formacion_academica = DB::table('formacionAcademica')->select('*')->where('idProfesor',$id)->get();
         $informacion_laboral = DB::table('informacionLaboral')->select('*')->where('idProfesor',$id)->get();
