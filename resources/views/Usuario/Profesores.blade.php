@@ -10,7 +10,7 @@
     .profesor{
         color: #3385ff;
         font-family: 'Anton', sans-serif;
-        font-size: 50px;
+        font-size: 30px;
     }
     .fa-plus-circle{
         color:#005ce6;
@@ -59,25 +59,15 @@
            
             @endif                                        
         @else            
-            <div class="navar">
+        <div class="navar">
                 <ul class="nav nav-pills"> 
                     <li><a href="{{ url('/') }}">Inicio</a></li>
-                    <li><a href="{{ url('/login') }}">Alumnos</a></li>
+                    <li><a href="{{ url('/Admin/Alumnos') }}">Alumnos</a></li>
                     <li><a href="{{ url('/Admin/Profesores') }}">Profesores</a></li>
-                    <li><a href="{{ url('/login') }}">Comentarios</a></li>
+                    <li><a href="{{ url('/Admin/Comentarios') }}">Comentarios</a></li>
+                    <li><a href="{{ url('/Admin/Materias') }}">Materias</a></li>
                  </ul>
-            </div>
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Bienvenido</div>
-                            <div class="panel-body">
-                                Hola Administrador.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>                                                  
+            </div>                                                
         @endif                                        
     @else
         @if (Auth::user()->is_profesor == true)

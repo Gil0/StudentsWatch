@@ -43,7 +43,7 @@ class comentarioController extends Controller
         ->join('profesores', 'profesores.user_id' , '=' ,'users.id')
         ->select( 'profesores.idProfesor','profesores.descripcion','profesores.cubiculo', 'profesores.hobbies', 'users.name', 'users.matricula',  'users.email')
         ->where('idProfesor',$id)->first();
-        $comentarios = DB::table('comentarios')->select('*')->where('idProfesor',$id)->where('status',1)->paginate(3);        
+        $comentarios = DB::table('comentarios')->select('*')->where('idProfesor',$id)->where('status',1)->paginate(10);        
         
         return view('/Usuario/comentarios')->with('profesores',$profesores)->with('comentarios',$comentarios);      
 

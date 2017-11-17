@@ -46,18 +46,7 @@
                     <li><a href="{{ url('/Admin/Comentarios') }}">Comentarios</a></li>
                     <li><a href="{{ url('/Admin/Materias') }}">Materias</a></li>
                  </ul>
-            </div>
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Bienvenido</div>
-                            <div class="panel-body">
-                                Hola Administrador.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>                                                  
+            </div>                                                 
         @endif                                        
     @else
         @if (Auth::user()->is_profesor == true)
@@ -83,13 +72,13 @@
                                           
             @endif
         @else            
-            <div class="navar">
+        <div class="navar">
                 <ul class="nav nav-pills">
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
-                    <li><a href="{{ url('/login') }}">Mi Mapa Curricular</a></li>
-                    <li><a href="{{ url('/login') }}">Mi Progreso</a></li>
+                    <li><a href="{{ url('/Usuario/Mimapa/'.encrypt(Auth::user()->id)) }}">Mi Mapa Curricular</a></li>
+                    <li><a href="{{ url('/Usuario/Progreso/'.encrypt(Auth::user()->id)) }}">Mi Progreso</a></li>
                     <li><a href="{{ url('/Usuario/Profesores') }}">Ver Profesores</a></li>
-                    <li><a href="{{ url('/login') }}">Ver Comentarios</a></li>
+                    <li><a href="{{ url('/Usuario/Materias') }}">Ver materias</a></li>
                  </ul>
             </div>
                                                              
@@ -98,7 +87,7 @@
 
     <div class="row">
         <div class="col-12 col-md-12">
-            <div class="panel panel-info">
+            <div class="panel panel-primary">
                 <div class="panel-heading labelmenu">Información Personal</div>
                     <div class="panel-body">                                                     
                         <form class="form-horizontal">   
@@ -157,7 +146,7 @@
             </div>
         </div>
         <!--Informacion Formacion Academica-->
-            <div class="panel panel-info">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Informacion Academica</div>                        
                     @if(!empty($formacion_academica))
                     <div class="panel-body">   
@@ -184,7 +173,7 @@
             </div>                         
             
              <!--Informacion Informacion Laboral-->
-            <div class="panel panel-info">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Informacion Laboral</div>
                     @if(!empty($informacion_laboral))
                     <div class="panel-body">

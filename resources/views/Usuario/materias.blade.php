@@ -11,10 +11,9 @@
         color: #3385ff;
         font-family: 'Anton', sans-serif;
         letter-spacing: 2px;
-        font-size: 50px;
+        font-size: 30px;
     }
 
-    }
 </style>
 
     @if (Auth::user()->is_admin == true)
@@ -47,25 +46,15 @@
            
             @endif                                        
         @else            
-            <div class="navar">
+           <div class="navar">
                 <ul class="nav nav-pills"> 
                     <li><a href="{{ url('/') }}">Inicio</a></li>
-                    <li><a href="{{ url('/login') }}">Alumnos</a></li>
+                    <li><a href="{{ url('/Admin/Alumnos') }}">Alumnos</a></li>
                     <li><a href="{{ url('/Admin/Profesores') }}">Profesores</a></li>
-                    <li><a href="{{ url('/login') }}">Comentarios</a></li>
+                    <li><a href="{{ url('/Admin/Comentarios') }}">Comentarios</a></li>
+                    <li><a href="{{ url('/Admin/Materias') }}">Materias</a></li>
                  </ul>
-            </div>
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Bienvenido</div>
-                            <div class="panel-body">
-                                Hola Administrador.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>                                                  
+            </div>                                               
         @endif                                        
     @else
         @if (Auth::user()->is_profesor == true)
@@ -104,7 +93,7 @@
         @endif                                        
     @endif 
 
-            <div class="col-sm-9">
+            <div class="col-sm-12">
                 <div align="center" >
                     <p class="profesor">Materias</p>
                 </div>
@@ -129,14 +118,14 @@
                                     <th>
                                         <div class="panel-heading">
 
-                                            <button class="btn btn-success" id="nuevaMateriaCursada" id1="{{$materias->nombre}}" style="width:100%;" value="{{$materias->idMateria}}">Agregar Materia aprobada</button>
+                                            <button class="btn btn-success" id="nuevaMateriaCursada" id1="{{$materias->nombre}}" style="width:95%;" value="{{$materias->idMateria}}">Materia aprobada</button>
                                         </div>
                                     </th>
 
                                     <th>
                                         <div class="panel-heading">
 
-                                            <button class="btn btn-success materiaEnCurso" id="{{$materias->nombre}}" style="width:100%;" value="{{$materias->idMateria}}">Agregar materia en curso</button>
+                                            <button class="btn btn-success materiaEnCurso" id="{{$materias->nombre}}" style="width:60%;" value="{{$materias->idMateria}}">Materia en curso</button>
                                         </div>
                                     </th>
 
