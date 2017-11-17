@@ -4,7 +4,7 @@
 <!--<meta name="csrf_token" content="{{ csrf_token() }}" /> <!Se necestia este metadato para poder hacer AJAX, se envia el csrf_token al server para validar que si existe la sesion -->
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-
+<div class="container">
     @if (Auth::user()->is_admin == true)
         @if (Auth::user()->is_profesor == true)                                                        
             @if (Auth::user()->is_tutor == true)                
@@ -82,36 +82,32 @@
         @endif                                        
     @endif 
 
-    <div class="col-sm-12">
-              <div>
-                <p class="profesor"></p>
-              </div>
-              
-                <div class="panel panel-default">
-                  <div class="panel-heading">Comentarios de profesor {{$profesores->name}}</div>
-                    <div class="panel-body">
-                      <table class="table table-striped">
-                        <thread>
-                          <tr>
-                            <th>#</th>
-                            <th>comentario</th>
-                            <th>Calificacion</th>
-                          </tr>
-                        </thread>
-                        <tbody>
-                      
-                        @foreach($comentarios as $comentario)
-                        <tr>
-                          <th scope="row">{{$comentario->idComentario}}</th>
-                          <th>{{$comentario->comentario}}</th>
-                          <th>{{$comentario->calificacion}}</th>
-                    
-                        </tr>
-                        @endforeach
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>           
+    <div class="row">
+    <div class="col-sm-12 col-xs-12" >
+    <div class="panel panel-primary">
+                <div class="panel-heading">Comentarios de profesor {{$profesores->name}} </div>                        
+                    <div class="panel-body">   
+                        <table class="table table-hover">
+                                <thread class="thead-inverse">
+                                    <tr>                                    
+                                    <th> comentario</th>
+                                    <th>Calificacion</th>                                  
+                                    </tr>
+                                </thread>                     
+                                @foreach($comentarios as $comentario)
+                            <tbody>
+                                <tr>
+                                    <th>{{$comentario->comentario}}</th>
+                                    <th>{{$comentario->calificacion}}</th>
+                                </tr>
+                            </tbody>                                                                                                                                                                                
+                            @endforeach
+                        </table>
+                        <div align="center"> {!! $comentarios -> render() !!}</div>
+                    </div>                                                          
+                </div> 
+              </div>        
+        </div>
+    </div>
+</div>
     @endsection

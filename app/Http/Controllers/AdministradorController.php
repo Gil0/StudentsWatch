@@ -58,7 +58,7 @@ class AdministradorController extends Controller
     }
 
     public function comentarios(){
-         $comentarios = DB::table('comentarios')->select('*')->paginate(8);
+         $comentarios = DB::table('comentarios')->select('*')->paginate(6);
         return view('/Admin/AdminComentarios',['comentarios'=>$comentarios]);
      }
 

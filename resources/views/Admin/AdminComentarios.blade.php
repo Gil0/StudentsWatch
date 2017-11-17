@@ -10,7 +10,7 @@
         color: #3385ff;
         font-family: 'Anton', sans-serif;
         letter-spacing: 2px;
-        font-size: 50px;
+        font-size: 30px;
     }
     i.fa-trash{
       color: #d9534f;
@@ -19,7 +19,6 @@
         color:red;
     }
 
-    }
   
 </style>
 <div class="container">
@@ -37,45 +36,42 @@
     <div class="col-sm-12 logindiv2" >
         <div align="center" >
         <p class="profesor">Comentarios</p>
-        </div> 
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <table class="table table-hover">
-              <thread>
-                <tr>
-                  <th class="head">Id</th>
-                  <th class="head">Comentario</th>
-                  <th class="head">Calificacion</th>
-                  <th class="head text-center">Status</th>
-                  <th class="head text-center">Eliminar</th>
-                </tr>
-              </thread>
-              <tbody>
-              @foreach($comentarios as $comentario)
-                <tr class="rowsTabla">
-                  <th scope="row">{{$comentario->idComentario}}</th>
-                  <th id="comentario">{{$comentario->comentario}}</th>
-                  <th>{{$comentario->calificacion}}</th>
-                  <th class="text-center">
-                  <!-- Single button -->
-                  <div class="btn-group">
-                    <button type="button" class="btn statusBtn" style="width:200%;" id="{{$comentario->idComentario}}" value="{{$comentario->status}}" name="{{$comentario->idProfesor}}">
+        </div>
+    <div class="container">
+  <div class="row">
+    <div class=" col-sm-12 col-md-10 col-md-offset-1  col-lg-12">
+      <div class="panel panel-default">
+        <table class="table table-striped">
+          <thread>
+            <tr>
+              <th class="head">comentario</th> 
+              <th class="head"><div align="center">calificacion</div></th> 
+              <th class="head">status</th> 
+              <th class="head"></th> 
+            </tr>
+          </thread>
+          <tbody>
+          @foreach($comentarios as $comentario)
+            <tr class="rowsTabla">            
+              <th >{{$comentario->comentario}}</th>
+              <th><div align="center">{{$comentario->calificacion}}</div></th>
+              <th class="text-center"><div class="btn-group">
+                    <button type="button" class="btn statusBtn" style="width:100%;" id="{{$comentario->idComentario}}" value="{{$comentario->status}}" name="{{$comentario->idProfesor}}">
                       <i class="fa fa-bullseye" aria-hidden="true"></i>
                     </button>
                   </div>
-                  </th>
-                  <th> <div align="center"> <i class="fa fa-trash fa-2x icondelete" aria-hidden="true" value="{{$comentario->idComentario}}"></i></div></th>
-                </tr>
-                @endforeach
-              </tbody>
-            </table>
-            <div align="center"> {!! $comentarios -> render() !!}</div>
-          </div>
-        </div>
+                </th>
+              <th> <div align="center"> <i class="fa fa-trash fa-2x icondelete" aria-hidden="true" value="{{$comentario->idComentario}}"></i></div></th>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+        <div align="center"> {!! $comentarios -> render() !!}</div>
       </div>
     </div>
   </div>
-</div>
+</div>    
+
 
 <!-- modal Nuevo Profesor-->
 <div class="modal fade" id="nuevoProfesor" tabindex="-1" role="dialog" aria-labelledby="Nuevo Profesor">
