@@ -588,3 +588,12 @@ contenedor{
  #main #content * {max-width:100%}
  #main #sidebar {float:left; margin:20px 0 0 3.47222222%; width:28.7698413%; }
  #main #sidebar * {max-width:100%}
+
+ #letra-nav{
+	color: white;
+ }
+
+ #letra-nav:hover{
+	
+	color: gray;
+}

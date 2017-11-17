@@ -67,11 +67,11 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}"><i class="fa fa-btn fa-user"></i>Iniciar sesión</a></li>
-                        <li><a href="{{ url('/register') }}"><i class="fa fa-id-card-o" aria-hidden="true"> </i> Registrarse</a></li>
+                        <li><a id="letra-nav" href="{{ url('/login') }}"><i class="fa fa-btn fa-user"></i>Iniciar sesión</a></li>
+                        <li><a id="letra-nav" href="{{ url('/register') }}"><i class="fa fa-id-card-o" aria-hidden="true"> </i> Registrarse</a></li>
                     @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <a href="#" id="letra-nav" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                                     @if (Auth::user()->is_admin == true)
                                         @if (Auth::user()->is_profesor == true)                                                                                        
