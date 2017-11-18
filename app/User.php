@@ -27,6 +27,11 @@ class User extends Authenticatable
     public function alumnoCurso(){
         return $this->hasMany('App\alumnoCurso','user_id', 'id');
     }
+
+    public function materiaCursando(){
+        return $this->hasMany('App\materiaCursando','id_user', 'id');
+    }
+
     protected $hidden = [
         'password', 'remember_token',
     ];

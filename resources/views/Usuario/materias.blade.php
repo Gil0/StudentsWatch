@@ -105,7 +105,7 @@
                                     <th>#</th>
                                     <th>Nombre</th>
                                     <th id="materiaCursada">Agregar Materia Cursada</th>
-                                    <th>Agregar Materia en curso</th>
+                                    <th id="materiaCursada1">Agregar Materia en curso</th>
                                 </tr>
                             </thread>
                             <tbody>
@@ -125,7 +125,7 @@
                                     <th>
                                         <div class="panel-heading">
 
-                                            <button class="btn btn-success materiaEnCurso" id="{{$materias->nombre}}" style="width:60%;" value="{{$materias->idMateria}}">Materia en curso</button>
+                                            <button class="btn btn-success" id="NuevaMatEnCurso" id1="{{$materias->nombre}}" style="width:60%;" value="{{$materias->idMateria}}">Materia en curso</button>
                                         </div>
                                     </th>
 
@@ -140,6 +140,7 @@
         </div>
     </div>
 </div>
+<!-- modal materia cursada -->
 <div class="modal fade" id="MateriaCursada" tabindex="-1" role="dialog" aria-labelledby="Agregar Materia Cursada">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -167,6 +168,34 @@
   </div>
 </div>
 
+<!-- modal materia en curso -->
+<div class="modal fade" id="MateriaEncurso" tabindex="-1" role="dialog" aria-labelledby="Agregar Materia en curso">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel">Agregar Materia En Curso </h4>
+    </div>
+
+    <form id="formMateriaEncurso" method="POST">
+
+
+    {{ csrf_field() }} <!-- ESTE TOKEN ES IMPORTANTE PARA PODER ENVIAR DATOS AL SERVER... si no lo incluyes habra error ya que la informacion no es "confiable" -->
+      <div class="modal-body">
+         <p>hola {{Auth::user()->name}} estás seguro de que deseas agregar esta materia a tus materias que estás cursando? </p>
+         
+          <input type="hidden" name="user" value="{{Auth::user()->id}}">
+        
+      </div>
+      <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" id="crearMateriaCursada">Agregar Materia</button>
+          <button type="button" readonly class="btn btn-default" data-dismiss="modal" id="cancelar">Cerrar</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+
 <script>
     $(document).ready(function(){               
         $('i.fa-plus-circle').click(function(){
@@ -181,15 +210,13 @@
             $('form#formMateriaCursada').attr('action', '/user/MateriaCursada/crear/'+$(this).attr('value') + '/' +$(this).attr('id1')  );
         });
 
-        $('button#materiaEnCurso').click(function(){
-            $('#MateriaCursada').modal('show');
-            $('form#formMateriaCursada').attr('action', '/user/MateriaCursada/crear/'+$(this).attr('value')+ '/' +$(this).attr('id1') );
+        $('button#NuevaMatEnCurso').click(function(){
+            $('#MateriaEncurso').modal('show');
+            $('form#formMateriaEncurso').attr('action', '/user/MateriaEncurso/crear/'+$(this).attr('value') + '/' +$(this).attr('id1')  );
+          
         });
 
-        $("#cancelar").click(function(){
-            $('nuevaMateriaCursada').show();
-
-        });
+       
     });
 </script>
 @endsection

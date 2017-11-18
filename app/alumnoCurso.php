@@ -11,7 +11,7 @@ class alumnoCurso extends Model
     ];
 
     public function materia(){
-        return $this-> belongsTo('App\profesor', 'idMateria', 'idMateria');
+        return $this-> belongsTo('App\materia', 'idMateria', 'idMateria');
     }
    
 }

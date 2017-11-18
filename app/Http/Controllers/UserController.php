@@ -107,7 +107,7 @@ public function agregarMateriaCursada(Request $request, $id, $nombre){
        'idMateria' => $id,
        'User_id' => $request->user,
        'nombre' => $nombre,
-       'cursando' => false,
+       
       
    ]);
 
@@ -121,9 +121,13 @@ public function graficaAvance(Request $request, $id)
     $num = count($materias);   
     //dd($materias);
     //dd($num);
+    $cursando =  DB::table('materia_cursandos')->select('id_user', 'idMateria')->distinct()->where('id_user', '=', $ID)->get();
+    $num2 = count($cursando);   
     return view('Usuario/avanceGrafica')
     ->with('materias',$materias)
-    ->with('num',$num); 
+    ->with('num',$num)
+    ->with('cursando',$cursando)
+    ->with('num2',$num2);  
 }
 
 public function mapaAlumno(Request $request, $id)
@@ -137,5 +141,18 @@ public function mapaAlumno(Request $request, $id)
     ->with('materias',$materias);
    // ->with('num',$num); 
 }
+
+public function agregarMateriaEncurso(Request $request, $id, $nombre){
+    DB::table('materia_cursandos')->insert([
+        'id_user' => $request->user,
+       'idMateria' => $id,
+       'nombre' => $nombre,
+       
+      
+   ]);
+
+  return redirect()->action('UserController@materias');
+}
+
 
 }
