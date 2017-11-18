@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
     
     <!--Mi CSS-->
-    <link rel="stylesheet" href="../assets/css/estilos.css" >
+    <link rel="stylesheet" href="/assets/css/estilos.css" >
+    <link rel="stylesheet" href="<?php echo $url = asset('assets/css/estilos.css'); ?>">
 
 
     <!-- Styles -->    
@@ -22,8 +23,8 @@
    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
    <!--ESTILOS MIOS-->
-   <link rel="stylesheet" href="../assets/css/estilos.css">
-    {{-- <link href="{{ elixir('../assets/css/estilos.css') }}" rel="stylesheet"> --}}
+   <link rel="stylesheet" href="/assets/css/estilos.css">
+    {{-- <link href="{{ elixir('/assets/css/estilos.css') }}" rel="stylesheet"> --}}
     <style>
         body {
             font-family: 'Lato';
@@ -119,7 +120,7 @@
       <div class="row ">
           <div class="col-xs-12 col-sm-6 ">
               <div class="nav  ">
-                  <img  style="float:left;" class="pequeñita1" src="../assets/img/escudo.png">
+                  <img  style="float:left;" class="pequeñita1" src="/assets/img/escudo.png">
                   <a class="letra" target="blank" href="{{ url('http://www.buap.mx') }}">Benemérita Universidad Autonoma de Puebla <br> 4 Sur 104 Centro Historico <br>CP. 72000 Teléfono +52(222) 2295500<br>ext.5013</a>
                 
 
