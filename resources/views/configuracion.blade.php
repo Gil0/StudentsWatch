@@ -176,12 +176,14 @@ IMG.imagenUsuario{
                           <div class="alert alert-success">
                             <strong>{{Session::get('status')}}</strong>
                         </div>
-                        </div>      
+                        </div> 
+
                         
                     @endif
                         
 
                     </div> 
+                  
                 </div>         
             </div>
          

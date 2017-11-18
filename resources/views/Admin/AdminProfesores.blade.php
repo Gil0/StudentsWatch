@@ -24,9 +24,9 @@
 <meta name="csrf_token" content="{{ csrf_token() }}" /> <!--Se necestia este metadato para poder hacer AJAX, se envia el csrf_token al server para validar que si existe la sesion -->
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-<div class="container">
+<div class="container ">
 <div class="navar">
-<ul class="nav nav-pills"> 
+<ul class="nav nav-pills logindiv7 navbar-brand"> 
     <li><a href="{{ url('/') }}">Inicio</a></li>
     <li><a href="{{ url('/Admin/Alumnos') }}">Alumnos</a></li>
     <li><a href="{{ url('/Admin/Profesores') }}">Profesores</a></li>

@@ -33,7 +33,7 @@
         @if (Auth::user()->is_profesor == true)                                                        
             @if (Auth::user()->is_tutor == true)                
             <div class="navar">
-                <ul class="nav nav-pills"> 
+                <ul class="nav nav-pills logindiv7 navbar-brand"> 
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
                     <li><a href="{{ url('/login') }}">Mis alumnos</a></li>
                     <li><a href="{{ url('/login') }}">Mi Progreso</a></li>
@@ -47,7 +47,7 @@
             
             @else                
                 <div class="navar">
-                <ul class="nav nav-pills">
+                <ul class="nav nav-pills logindiv7 navbar-brand">
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
                     <li><a href="{{ url('/login') }}">Mi Informacion</a></li>
                     <li><a href="{{ url('/login') }}">Mis Comentarios</a></li>                                                
@@ -60,7 +60,7 @@
             @endif                                        
         @else            
         <div class="navar">
-                <ul class="nav nav-pills"> 
+                <ul class="nav nav-pills logindiv7 navbar-brand"> 
                     <li><a href="{{ url('/') }}">Inicio</a></li>
                     <li><a href="{{ url('/Admin/Alumnos') }}">Alumnos</a></li>
                     <li><a href="{{ url('/Admin/Profesores') }}">Profesores</a></li>
@@ -73,7 +73,7 @@
         @if (Auth::user()->is_profesor == true)
             @if (Auth::user()->is_tutor == true)                
             <div class="navar">
-                <ul class="nav nav-pills"> 
+                <ul class="nav nav-pills logindiv7 navbar-brand"> 
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
                     <li><a href="{{ url('/login') }}">Mis Alumnos</a></li>
                     <li><a href="{{ url('/login') }}">Mi Progreso</a></li>
@@ -84,7 +84,7 @@
                                                        
             @else            
             <div class="navar">
-                <ul class="nav nav-pills">
+                <ul class="nav nav-pills logindiv7 navbar-brand">
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
                     <li><a href="{{ url('/Profesor/Informacion/'.encrypt(Auth::user()->id)) }}">Mi Informacion</a></li>
                     <li><a href="{{ url('/login') }}">Mis Comentarios</a></li>                                                
@@ -94,7 +94,7 @@
             @endif
         @else            
             <div class="navar">
-                <ul class="nav nav-pills">
+                <ul class="nav nav-pills logindiv7 navbar-brand">
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
                     <li><a href="{{ url('/Usuario/Mimapa/'.encrypt(Auth::user()->id)) }}">Mi Mapa Curricular</a></li>
                     <li><a href="{{ url('/Usuario/Progreso/'.encrypt(Auth::user()->id)) }}">Mi Progreso</a></li>

@@ -29,7 +29,6 @@
         body {
             font-family: 'Lato';
         }
-
         .fa-btn {
             margin-right: 6px;
         }
@@ -136,6 +135,7 @@
 
 <div id="slideshow">
    <div class="f-desc1">
+   <br>
       <p align="center" class="letra">"Pensar bien para vivir mejor"</p>
   </div>
   <div class="f-desc1">

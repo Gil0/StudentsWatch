@@ -29,9 +29,9 @@
   
 </style>
 
-    <div class="container">
+    <div class="container ">
       <div class="navar">
-        <ul class="nav nav-pills"> 
+        <ul class="nav nav-pills logindiv7 navbar-brand"> 
             <li><a href="{{ url('/') }}">Inicio</a></li>
             <li><a href="{{ url('/Admin/Alumnos') }}">Alumnos</a></li>
             <li><a href="{{ url('/Admin/Profesores') }}">Profesores</a></li>
