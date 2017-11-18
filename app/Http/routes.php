@@ -46,7 +46,7 @@ Route::get('/Usuario/Materias',  ['middleware' => 'auth', 'uses' => 'UserControl
 Route::post('/user/MateriaCursada/crear/{id}/{nombre}',  ['middleware' => 'auth', 'uses' => 'UserController@agregarMateriaCursada']);
 route::get('/Usuario/Progreso/{id}',['middleware' => 'auth', 'uses' => 'UserController@graficaAvance']);
 route::get('/Usuario/Mimapa/{id}',['middleware' => 'auth', 'uses' => 'UserController@mapaAlumno']);
-
+Route::post('/user/MateriaEncurso/crear/{id}/{nombre}',  ['middleware' => 'auth', 'uses' => 'UserController@agregarMateriaEncurso']);
 //| Aqui se encuentran las rutas a las funcionalidades de profesores.
 
 
