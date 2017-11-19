@@ -101,7 +101,6 @@
     <div class="containter">
         <div   class="row">
             <div id="hola" class="col-md-6">
-            <p>asdasd</p>
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <script type="text/javascript">
             google.charts.load("current", {packages:["corechart"]});
@@ -132,7 +131,6 @@
             </div>
 
             <div id="hola2" class="col-md-6 col-xs-12">
-            <p>asdasd</p>
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <script type="text/javascript">
             google.charts.load("current", {packages:["corechart"]});
