@@ -89,4 +89,43 @@ class ProfesorController extends Controller
         $comentarios = DB::table('comentarios')->select('*')->where('idProfesor',$informacionProfesor->idProfesor)->where('status',true)->get();        
         return view('/Profesor/MisComentarios')->with('comentarios',$comentarios);
     }
+
+    public function misAlumnos(Request $request,$id){
+        $ID=Crypt::decrypt($id); 
+        $misAlumnos = DB::table('users')
+            ->join('alumnos', 'alumnos.user_id' , '=' ,'users.id')
+            ->select('users.name', 'users.email', 'users.id', 'alumnos.idAlumno','users.matricula')
+            ->where('idTutor',$ID)            
+            ->where('statusMiTutor',"Aceptado")->get();
+                    
+        $alumnos = DB::table('alumnos')
+            ->join('users', 'users.id' , '=' ,'alumnos.user_id')
+            ->select('users.name', 'users.email', 'users.matricula', 'alumnos.idAlumno','alumnos.statusMiTutor','alumnos.user_id')
+            ->where('statusMiTutor',"Revision")
+            ->where('idTutor',$ID)->get();      
+
+        return view('/Profesor/MisAlumnos')
+            ->with('misAlumnos',$misAlumnos)
+            ->with('alumnos',$alumnos);
+    }
+
+    public function eliminarSolicitud(Request $request, $id){                      
+        $evento = DB::table('alumnos')->where('idAlumno',$id)->update([
+            'statusMiTutor' => "Solicitud",
+            'nombreTutor' => null,
+            'idTutor' => 0
+            ]);     
+        $ID=Crypt::encrypt($request->ID);          
+    return redirect()->action('ProfesorController@misAlumnos',['id'=>$ID]);
+    } 
+
+    public function aceptarSolicitud(Request $request, $id){                      
+         $evento = DB::table('alumnos')->where('idAlumno',$id)->update([
+            'statusMiTutor' => $request->statusMiTutor
+            ]);    
+        $ID=Crypt::encrypt($request->idUsuario);          
+        return json_encode('Solicitud Aceptada');
+        //return redirect()->action('ProfesorController@misAlumnos',['id'=>$ID]);
+    }
+
 }

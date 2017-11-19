@@ -84,8 +84,12 @@ class AuthController extends Controller
             DB::table('profesores')->insert([          
                 'user_id' => $ID,
             ]);
+        }else{
+            $ID = $CrearUsuario->id;
+            DB::table('alumnos')->insert([          
+                'user_id' => $ID,
+            ]);
         }
-
         return $CrearUsuario;
     }
 }

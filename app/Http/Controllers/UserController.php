@@ -150,9 +150,39 @@ public function agregarMateriaEncurso(Request $request, $id, $nombre){
        
       
    ]);
-
   return redirect()->action('UserController@materias');
 }
 
+ public function verTutores(Request $request, $id){
+        $tutores=DB::table('users')
+            ->join('profesores', 'profesores.user_id' , '=' ,'users.id')
+            ->select( 'profesores.idProfesor','users.name','users.email','profesores.user_id')
+            ->where('is_tutor',1)->get();
+        $ID=Crypt::decrypt($id);
+        $mitutor=DB::table('alumnos')->where('user_id',$ID)->first();        
+        return view('/Usuario/MiTutor')
+                ->with('tutores',$tutores)    
+                ->with('mitutor',$mitutor);               
+    }
+
+    public function hacermitutor(Request $request, $id){       
+        $tutor = DB::table('users')->where('id',$request->idTutor)->first();
+        $evento = DB::table('alumnos')->where('idAlumno',$id)->update([
+            'statusMiTutor' => $request->statusMiTutor,
+            'nombreTutor' => $tutor->name,
+            'idTutor' => $request->idTutor
+            ]);
+        return json_encode('La solicitud ha sido enviada al Tutor');
+    }
+
+    public function cancelarTutor(Request $request, $id){ 
+        $ID=Crypt::decrypt($id);              
+        $evento = DB::table('alumnos')->where('user_id',$ID)->update([
+            'statusMiTutor' => "Solicitud",
+            'nombreTutor' => null,
+            'idTutor' => 0
+            ]);                      
+        return redirect()->action('UserController@verTutores',['id'=>$id]);
+    }
 
 }
