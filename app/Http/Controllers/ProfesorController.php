@@ -96,8 +96,7 @@ class ProfesorController extends Controller
             ->join('alumnos', 'alumnos.user_id' , '=' ,'users.id')
             ->select('users.name', 'users.email', 'users.id', 'alumnos.idAlumno','users.matricula')
             ->where('idTutor',$ID)            
-            ->where('statusMiTutor',"Aceptado")->get();
-                    
+            ->where('statusMiTutor',"Aceptado")->get();       
         $alumnos = DB::table('alumnos')
             ->join('users', 'users.id' , '=' ,'alumnos.user_id')
             ->select('users.name', 'users.email', 'users.matricula', 'alumnos.idAlumno','alumnos.statusMiTutor','alumnos.user_id')
@@ -110,13 +109,14 @@ class ProfesorController extends Controller
     }
 
     public function eliminarSolicitud(Request $request, $id){                      
+        $Usuario = DB::table('alumnos')->where('idAlumno',$id)->first();
         $evento = DB::table('alumnos')->where('idAlumno',$id)->update([
             'statusMiTutor' => "Solicitud",
             'nombreTutor' => null,
             'idTutor' => 0
-            ]);     
-        $ID=Crypt::encrypt($request->ID);          
-    return redirect()->action('ProfesorController@misAlumnos',['id'=>$ID]);
+            ]);        
+        $ID=Crypt::encrypt($Usuario->idTutor);          
+        return redirect()->action('ProfesorController@misAlumnos',['id'=>$ID]);
     } 
 
     public function aceptarSolicitud(Request $request, $id){                      
@@ -128,4 +128,18 @@ class ProfesorController extends Controller
         //return redirect()->action('ProfesorController@misAlumnos',['id'=>$ID]);
     }
 
+    public function verProgreso(Request $request, $id){
+        $ID=Crypt::decrypt($id);  
+        $materias = DB::table('alumno_cursos')->select('user_id', 'idMateria')->distinct()->where('user_id', '=', $ID)->get();
+        $num = count($materias);   
+        //dd($materias);
+        //dd($num);
+        $cursando =  DB::table('materia_cursandos')->select('id_user', 'idMateria')->distinct()->where('id_user', '=', $ID)->get();
+        $num2 = count($cursando);   
+        return view('Usuario/avanceGrafica')
+        ->with('materias',$materias)
+        ->with('num',$num)
+        ->with('cursando',$cursando)
+        ->with('num2',$num2);  
+    }
 }
