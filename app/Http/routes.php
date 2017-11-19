@@ -83,3 +83,4 @@ Route::post('/Admin/Materia/{id}/eliminar', 'AdministradorController@eliminarMat
 Route::get('/Admin/Alumnos',  ['middleware' => 'administrador', 'uses' => 'AdministradorController@Alumnos']);
 Route::post('/Admin/Alumno/{id}/eliminar', 'AdministradorController@eliminarAlumno');
 Route::post('/Admin/Materia/{id}/editar','AdministradorController@editarMateria');
+Route::post('/Admin/Usuarios/{id}/hacerAdmin', 'AdministradorController@hacerAdmin');

@@ -112,7 +112,7 @@ class AdministradorController extends Controller
     }
 
     public function Alumnos(){
-        $users=DB::table('users')->where('is_profesor',0)->where('is_admin',0)->get();
+        $users=DB::table('users')->where('is_profesor',0)->get();
         return view('/Admin/AdminUsuarios',['users'=>$users]);       
     }
 
@@ -131,4 +131,12 @@ class AdministradorController extends Controller
         $info = DB::table('materias')->select('*')->where('idMateria',$id)->first();         
         return redirect()->action('AdministradorController@Materias');
     }
+
+    public function hacerAdmin(Request $request, $id)
+    {
+        $evento = DB::table('users')->where('id',$id)->update(['is_admin' => $request->is_admin,]);
+        return json_encode('Se actualizó el status ');
+    }
+
+    
 }
