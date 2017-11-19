@@ -47,8 +47,10 @@ Route::post('/user/MateriaCursada/crear/{id}/{nombre}',  ['middleware' => 'auth'
 route::get('/Usuario/Progreso/{id}',['middleware' => 'auth', 'uses' => 'UserController@graficaAvance']);
 route::get('/Usuario/Mimapa/{id}',['middleware' => 'auth', 'uses' => 'UserController@mapaAlumno']);
 Route::post('/user/MateriaEncurso/crear/{id}/{nombre}',  ['middleware' => 'auth', 'uses' => 'UserController@agregarMateriaEncurso']);
+Route::get('/Usuario/MiTutor/{id}',  ['middleware' => 'auth', 'uses' => 'UserController@verTutores']);
+Route::post('/Usuario/MiTutor/{id}/hacermitutor', ['middleware' => 'auth', 'uses' => 'UserController@hacermitutor']);
+Route::post('/Usuario/MiTutor/{id}/cancelarTutor', ['middleware' => 'auth', 'uses' => 'UserController@cancelarTutor']);
 //| Aqui se encuentran las rutas a las funcionalidades de profesores.
-
 
 Route::get('/Profesor/Informacion/{id}',  ['middleware' => 'profesor', 'uses' => 'ProfesorController@miInformacion']);
 Route::post('/Profesor/Informacion/{id}/guardarInformacionPersonal', ['middleware' => 'profesor', 'uses' => 'ProfesorController@guardarInformacionPersonal']);
@@ -57,6 +59,9 @@ Route::post('/Profesor/Informacion/laboral/crear',['middleware' => 'profesor', '
 Route::post('/Profesor/Informacion/academica/{id}/eliminar',['middleware' => 'profesor', 'uses' => 'ProfesorController@eliminarInformacionAcademica']);
 Route::post('/Profesor/Informacion/laboral/{id}/eliminar', ['middleware' => 'profesor', 'uses' => 'ProfesorController@eliminarInformacionLaboral']);
 Route::get('/Profesor/MisComentarios/{id}',  ['middleware' => 'profesor', 'uses' => 'ProfesorController@misComentarios']);
+Route::get('/Profesor/MisAlumnos/{id}',  ['middleware' => 'profesor', 'uses' => 'ProfesorController@misAlumnos']);
+Route::post('/Profesor/MisAlumnos/{id}/eliminarSolicitud',['middleware' => 'profesor', 'uses' => 'ProfesorController@eliminarSolicitud']);
+Route::post('/Profesor/MisAlumnos/{id}/aceptarSolicitud', ['middleware' => 'profesor', 'uses' => 'ProfesorController@aceptarSolicitud']);
 /*
 |--------------------------------------------------------------------------
 | Rutas de Administradores
