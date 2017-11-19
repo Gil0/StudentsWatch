@@ -3,7 +3,12 @@
     #piechart_3d{
         background-color: none;
     }
-
+    .header{
+	background-color:#212F3C  ;
+}
+.header-top{
+	padding:1% 0;
+}
 </style>
 @section('content')
 @if (Auth::user()->is_admin == true)
@@ -92,10 +97,12 @@
                                                              
         @endif                                        
     @endif 
-    <div class="container">
-       <div class="row">
-        <div class="col-md-12">
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    <div class="containter">
+        <div   class="row">
+            <div id="hola" class="col-md-6">
+            <p>asdasd</p>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <script type="text/javascript">
             google.charts.load("current", {packages:["corechart"]});
             google.charts.setOnLoadCallback(drawChart);
@@ -122,8 +129,42 @@
             <div align="center" id="piechart_3d"  style="width: 90%; height: 60%;"></div>
             
           </body>   
-        </div> 
+            </div>
+
+            <div id="hola2" class="col-md-6 col-xs-12">
+            <p>asdasd</p>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                ['Materias', 'Progreso'],
+                
+                ['Materias cursando actualmente: {{$num2}}', {{$num2}}],
+                ['Materias por cursar {{56-$num}}',    {{56-$num}}- {{$num2}} ],
+                
+            
+                ]);
+                var options = {
+                title: 'Materias Cursando',
+                is3D: true,
+                };
+                var chart = new google.visualization.PieChart(document.getElementById('cursando'));
+                chart.draw(data, options);
+            }
+            </script>
+            </head>
+            <body>
+            <div align="center" id="cursando"  style="width: 90%; height: 60%;"></div>
+            
+          </body>   
+            </div>
         </div>
-    </div>      
+
+    </div>  
+  
+       
+    
   
 @endsection
