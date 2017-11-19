@@ -130,8 +130,7 @@
             <div class="navar">
                 <ul class="nav nav-pills"> 
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
-                    <li><a href="{{ url('/Profesor/MisAlumnos/'.encrypt(Auth::user()->id))}}">Mis Alumnos</a></li>
-                    <li><a href="{{ url('/login') }}">Mi Progreso</a></li>
+                    <li><a href="{{ url('/Profesor/MisAlumnos/'.encrypt(Auth::user()->id))}}">Mis Alumnos</a></li>                    
                     <li><a href="{{ url('/Profesor/Informacion/'.encrypt(Auth::user()->id)) }}">Mi Informacion</a></li>
                     <li><a href="{{ url('/Profesor/MisComentarios/'.encrypt(Auth::user()->id)) }}">Mis Comentarios</a></li>                      
                  </ul>

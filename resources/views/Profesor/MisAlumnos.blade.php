@@ -88,10 +88,9 @@
   <div class="navar">
       <ul class="nav nav-pills"> 
           <li><a href="{{ url('/login') }}">Inicio</a></li>
-          <li><a href="{{ url('/login') }}">Mis Alumnos</a></li>
-          <li><a href="{{ url('/login') }}">Mi Progreso</a></li>
+          <li><a href="{{ url('/Profesor/MisAlumnos/'.encrypt(Auth::user()->id))}}">Mis Alumnos</a></li>                              
           <li><a href="{{ url('/Profesor/Informacion/'.encrypt(Auth::user()->id)) }}">Mi Informacion</a></li>
-  <li><a href="{{ url('/Profesor/MisComentarios/'.encrypt(Auth::user()->id)) }}">Mis Comentarios</a></li>  
+          <li><a href="{{ url('/Profesor/MisComentarios/'.encrypt(Auth::user()->id)) }}">Mis Comentarios</a></li>  
       </ul>
   </div>
                                                     
@@ -114,12 +113,13 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                <table class="table table-hover">
-                                  <thread>
+                                  <thread align="center"> 
                                       <tr>                                      
                                           <th>Nombre</th>
                                           <th>Email</th>
                                           <th>Matricula</th>
-                                          <th>Eliminar</th>                                                                              
+                                          <th>Ver Progreso</th>
+                                          <th>Eliminar</th>                                                                                                                        
                                       </tr>
                                   </thread>
                                   <tbody>                             
@@ -128,8 +128,9 @@
                                               <tr>                                                  
                                                   <th>{{$misAlumnos->name}} </th>
                                                   <th>{{$misAlumnos->email}} </th>
-                                                  <th>{{$misAlumnos->matricula}} </th>
-                                                  <th><center><i class="fa fa-trash fa-2x icondelete" id="EliminarAlumnoSolicitud" aria-hidden="true" value="{{$misAlumnos->idAlumno}}"></i><center></th>                                                  
+                                                  <th>{{$misAlumnos->matricula}} </th>                                                  
+                                                  <th><i class="fa fa-line-chart fa-2x icondelete" id="verProgreso" aria-hidden="true" value="{{encrypt($misAlumnos->id)}}"></i></th>                                                  
+                                                  <th><i class="fa fa-trash fa-2x icondelete" id="EliminarAlumnoSolicitud" aria-hidden="true" value="{{$misAlumnos->idAlumno}}"></i></th>                                                  
                                               </tr>
                                           @endforeach
                                       @endif                            
@@ -187,12 +188,8 @@
       </div>
       <div class="modal-footer">
         <form method="POST" action="" id="eliminarSolicitudAlumno">
-            {{ csrf_field() }}
-            @if($alumnos)
-              <input type="hidden" value="{{$alumnos->idAlumno}}" name="idAlumno">
-              <input type="hidden" value="{{$alumnos->user_id}}" name="ID">
-            @endif
-            <button type="submit" class="btn btn-danger" style="width:100%;">SI</button>
+            {{ csrf_field() }}            
+            <button id="SI" type="submit" class="btn btn-danger" style="width:100%;">SI</button>
         </form>
         <button type="button" class="btn btn-default" style="width:100%;" data-dismiss="modal">NO</button>
       </div>
@@ -202,10 +199,14 @@
 <script>
     $(document).ready(function(){
 
-         $('i#EliminarAlumnoSolicitud').click(function(){       
+        $('i.fa-line-chart').click(function(){           
+          window.location.href = '/Profesor/MisAlumnos/'+$(this).attr('value')+'/verProgreso';
+        });
+        
+         $('i.fa-trash').click(function(){       
            $('#eliminarSolicitudAlumnoModal').modal('show');
-           $('form#eliminarSolicitudAlumno').attr('action','/Profesor/MisAlumnos/'+$(this).attr('value')+'/eliminarSolicitud');
-         });  
+           $('form#eliminarSolicitudAlumno').attr('action','/Profesor/MisAlumnos/'+$(this).attr('value')+'/eliminarSolicitud');           
+         });                 
 
          $('i.fa-graduation-cap').each(function(){
             if($(this).attr('value') == "Revision"){
@@ -243,7 +244,7 @@
                     location.reload();
                 }
              });
-         });  
+         });           
     });
 </script>  
 @endsection

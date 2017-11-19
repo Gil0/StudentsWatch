@@ -165,7 +165,7 @@
                                         <div class="form-group success">
                                             <label class="col-sm-2 control-label">Nombre de mi tutor</label>
                                             <div class="col-sm-10">                                                                                                                                                                        
-                                                <input type="text" class="form-control" id="nombreTutor" name="nombreTutor" placeholder="No se ha elegido a un tutor..." readonly>                                                
+                                                <input type="text" class="form-control" id="nombreTutor" name="nombreTutor" value="{{$mitutor->nombreTutor}}" readonly>                                                
                                             </div>
                                         </div> 
                                     </form>
