@@ -27,10 +27,9 @@
 <div class="container d">
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-default">
-                    <div class="panel-body logindiv1">
-                <center>  <p class=letra2> Alumnos registrados en el sistema</p> </center>
-
+            <div class="panel panel-primary">
+            <div align="center" class="panel-heading letra2">Alumnos registrados en el sistema</div>
+                    <div class="panel-body">
                     <div class="panel panel-default">
                         <div class="panel-body">
                         <table class="table">

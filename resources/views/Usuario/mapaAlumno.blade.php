@@ -16,7 +16,8 @@
 
     </style>
 
-    @if (Auth::user()->is_admin == true)
+  <div class="container">
+  @if (Auth::user()->is_admin == true)
         @if (Auth::user()->is_profesor == true)                                                        
             @if (Auth::user()->is_tutor == true)                
             <div class="navar">
@@ -103,12 +104,15 @@
                                                              
         @endif                                        
     @endif 
-
-           <div class="row">
+    
+  </div>
+        
+     <div class="container">
+     <div class="row">
            <div class="col-sm-10 col-sm-offset-1">
-                <div align="center" >
-                    <p class="profesor">Materias</p>
-                </div>
+                    <div align="center" >
+                        <p class="profesor">Materias</p>
+                    </div>
                 <div class="panelesp">
                     <div class="panel-body">
                         <table class="table table-hover">
@@ -127,12 +131,12 @@
                              @endforeach
                             </tbody>
                         </table>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
- </div>
+     
+     </div>   
+      
 
 @endsection

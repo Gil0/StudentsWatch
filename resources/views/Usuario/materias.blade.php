@@ -15,20 +15,21 @@
     }
 
 </style>
-
-    @if (Auth::user()->is_admin == true)
+<div class="container">
+    
+@if (Auth::user()->is_admin == true)
         @if (Auth::user()->is_profesor == true)                                                        
             @if (Auth::user()->is_tutor == true)                
             <div class="navar">
                 <ul class="nav nav-pills"> 
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
-                    <li><a href="{{ url('/login') }}">Mis alumnos</a></li>
-                    <li><a href="{{ url('/login') }}">Mi Progreso</a></li>
-                    <li><a href="{{ url('/login') }}">Mi Información</a></li>
-                    <li><a href="{{ url('/login') }}">Mis Comentarios</a></li>
-                    <li><a href="{{ url('/login') }}">Alumnos</a></li>
+                    <li><a href="{{ url('/Profesor/MisAlumnos/'.encrypt(Auth::user()->id))}}">Mis Alumnos</a></li>                    
+                    <li><a href="{{ url('/Profesor/Informacion/'.encrypt(Auth::user()->id)) }}">Mi Informacion</a></li>
+                    <li><a href="{{ url('/Profesor/MisComentarios/'.encrypt(Auth::user()->id)) }}">Mis Comentarios</a></li> 
+                    <li><a href="{{ url('/Admin/Alumnos') }}">Alumnos</a></li>
                     <li><a href="{{ url('/Admin/Profesores') }}">Profesores</a></li>
-                    <li><a href="{{ url('/login') }}">Comentarios</a></li>
+                    <li><a href="{{ url('/Admin/Comentarios') }}">Comentarios</a></li>
+                    <li><a href="{{ url('/Admin/Materias') }}">Materias</a></li>
                  </ul>
             </div>
             
@@ -36,17 +37,18 @@
                 <div class="navar">
                 <ul class="nav nav-pills">
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
-                    <li><a href="{{ url('/login') }}">Mi Informacion</a></li>
-                    <li><a href="{{ url('/login') }}">Mis Comentarios</a></li>                                                
-                    <li><a href="{{ url('/login') }}">Alumnos</a></li>
-                    <li><a href="{{ url('/Admin/Profesores/') }}">Profesores</a></li>
-                    <li><a href="{{ url('/login') }}">Comentarios</a></li>
+                    <li><a href="{{ url('/Profesor/Informacion/'.encrypt(Auth::user()->id)) }}">Mi Informacion</a></li>
+                    <li><a href="{{ url('/Profesor/MisComentarios/'.encrypt(Auth::user()->id)) }}">Mis Comentarios</a></li>                                               
+                    <li><a href="{{ url('/Admin/Alumnos') }}">Alumnos</a></li>
+                    <li><a href="{{ url('/Admin/Profesores') }}">Profesores</a></li>
+                    <li><a href="{{ url('/Admin/Comentarios') }}">Comentarios</a></li>
+                    <li><a href="{{ url('/Admin/Materias') }}">Materias</a></li>
                   </ul>
             </div>
            
             @endif                                        
         @else            
-           <div class="navar">
+        <div class="navar">
                 <ul class="nav nav-pills"> 
                     <li><a href="{{ url('/') }}">Inicio</a></li>
                     <li><a href="{{ url('/Admin/Alumnos') }}">Alumnos</a></li>
@@ -54,7 +56,7 @@
                     <li><a href="{{ url('/Admin/Comentarios') }}">Comentarios</a></li>
                     <li><a href="{{ url('/Admin/Materias') }}">Materias</a></li>
                  </ul>
-            </div>                                               
+            </div>                                                
         @endif                                        
     @else
         @if (Auth::user()->is_profesor == true)
@@ -62,10 +64,9 @@
             <div class="navar">
                 <ul class="nav nav-pills"> 
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
-                    <li><a href="{{ url('/login') }}">Mis Alumnos</a></li>
-                    <li><a href="{{ url('/login') }}">Mi Progreso</a></li>
-                    <li><a href="{{ url('/login') }}">Mi Información</a></li>
-                    <li><a href="{{ url('/login') }}">Mis Comentarios</a></li>
+                    <li><a href="{{ url('/Profesor/MisAlumnos/'.encrypt(Auth::user()->id))}}">Mis Alumnos</a></li>                    
+                    <li><a href="{{ url('/Profesor/Informacion/'.encrypt(Auth::user()->id)) }}">Mi Informacion</a></li>
+                    <li><a href="{{ url('/Profesor/MisComentarios/'.encrypt(Auth::user()->id)) }}">Mis Comentarios</a></li> 
                  </ul>
             </div>
                                                        
@@ -74,7 +75,7 @@
                 <ul class="nav nav-pills">
                     <li><a href="{{ url('/login') }}">Inicio</a></li>
                     <li><a href="{{ url('/Profesor/Informacion/'.encrypt(Auth::user()->id)) }}">Mi Informacion</a></li>
-                    <li><a href="{{ url('/login') }}">Mis Comentarios</a></li>                                                
+                    <li><a href="{{ url('/Profesor/MisComentarios/'.encrypt(Auth::user()->id)) }}">Mis Comentarios</a></li>                                                 
                   </ul>
             </div>
                                           
@@ -93,6 +94,8 @@
                                                              
         @endif                                        
     @endif 
+</div>
+
 
             <div class="col-sm-12">
                 <div align="center" >

@@ -1,6 +1,22 @@
 @extends('layouts.app')
 @section('content')
 <style>
+i.fa-trash{
+      color: #d9534f;
+    }
+    i.fa-trash:hover{
+        color:red;
+    }
+   
+    i.fa-line-chart{
+      color:#ffc266;
+    }
+    i.fa-line-chart:hover{
+        color:#cc7a00;
+        
+    }
+   
+
   IMG.calificacionProfesor{
     display: block;
     margin-left: auto;

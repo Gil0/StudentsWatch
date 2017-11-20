@@ -36,11 +36,9 @@
 </div>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default logindiv3">
-                <div class="panel-heading letra2">Funciones Administrador Profesores</div>
+            <div class="panel panel-primary">
+                <div align="center" class="panel-heading letra2">Funciones Administrador Profesores</div>
                 <div class="panel-body">
-                    Aqui se llevan a cabo las funciones del administrador sobre los profesores.                    
-
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <table class="table table-hover">

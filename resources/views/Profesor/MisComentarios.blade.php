@@ -109,7 +109,7 @@ p {
     <div class="row">
         <div class="col-12 col-md-12">
 
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Mis Comentarios</div>                    
                     <div class="panel-body">                    
                         <div class="panel panel-default">

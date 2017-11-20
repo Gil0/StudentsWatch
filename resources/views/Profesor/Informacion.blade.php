@@ -3,6 +3,13 @@
 <meta name="csrf_token" content="{{ csrf_token() }}" /> <!--Se necestia este metadato para poder hacer AJAX, se envia el csrf_token al server para validar que si existe la sesion -->
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <style>
+i.fa-trash{
+      color: #d9534f;
+    }
+    i.fa-trash:hover{
+        color:red;
+    }
+   
 IMG.calificacionProfesor{
   display: block;
   margin-left: auto;
@@ -32,7 +39,7 @@ svg {
   }
   &.check {
     stroke-dashoffset: -100;
-    -webkit-animation: dash-check .9s .35s ease-in-out forwards;````````11111111111111111111111111111111111111
+    -webkit-animation: dash-check .9s .35s ease-in-out forwards; 
     animation: dash-check .9s .35s ease-in-out forwards;
   }
 }
@@ -109,7 +116,7 @@ p {
     <div class="row">
         <div class="col-12 col-md-12">
 
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Información Personal</div>
                     
                     <div class="panel-body">             
@@ -213,7 +220,7 @@ p {
                 </div>
             
 
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Información Académica</div>                    
                     <div class="panel-body">                    
                         <div class="panel panel-default">
@@ -254,7 +261,7 @@ p {
                 </div>
        
 
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Información Laboral</div>
                     <div class="panel-body">                    
                         <div class="panel panel-default">

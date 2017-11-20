@@ -10,7 +10,7 @@
         color: #3385ff;
         font-family: 'Anton', sans-serif;
         letter-spacing: 2px;
-        font-size: 50px;
+        font-size: 30px;
     }
 
     i.fa-trash{
