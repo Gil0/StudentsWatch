@@ -114,7 +114,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>    
-   <!--FOOTER-->
+   <!-- Se comento Footer debido a problemas de visibilidad en todas las vistas
+
    <footer style="padding-bottom: 0;">
   <div class="container">
       <div class="row ">
@@ -156,7 +157,7 @@ $('#slideshow > div:first')
 
 
 </footer>
-<!--finFOOTER-->
+-->
 <div class="espacio"><br><br></div>
 </body>   
 </html>

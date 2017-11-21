@@ -37,10 +37,11 @@
         <div align="center" >
         <p class="profesor">Comentarios</p>
         </div>
-    <div class="container">
+    </div>
+    
   <div class="row">
-    <div class=" col-sm-12 col-md-10 col-md-offset-1  col-lg-12">
-      <div class="panel panel-default">
+    <div class="col-12 col-md-12">
+      <div class="panel panel-default">      
         <table class="table table-striped">
           <thread>
             <tr>
@@ -70,6 +71,7 @@
       </div>
     </div>
   </div>
+
 </div>    
 
 
