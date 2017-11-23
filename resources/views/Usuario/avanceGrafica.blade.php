@@ -7,6 +7,9 @@
 .header-top{
 	padding:1% 0;
 }
+#h{
+    background-color:white;
+}
 </style>
 <div class="container">
 @if (Auth::user()->is_admin == true)
@@ -100,16 +103,14 @@
                         google.charts.setOnLoadCallback(drawChart);
                         function drawChart() {
                             var data = google.visualization.arrayToDataTable([
-                            ['Materias', 'Progreso'],
+                            ['Materias', 'Porcentaje'],
                             
                             ['Materias aprobadas: {{$num}}', {{$num}}],
-                            ['Materias por cursar {{56-$num}}',    {{56-$num}}],
-                            
-                        
+                            ['Materias por cursar: {{56-$num}}',    {{56-$num}}],            
                             ]);
                             ['Materias cursando actualmente', 0]
                             var options = {
-                            title: 'Mi progreso',
+                            title: 'Porcentaje',
                             is3D: true,
                             };
                             var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
@@ -124,41 +125,45 @@
         </div>
     </div>  
   
-
-    <div class="containter">
-        <div   class="row">
-        <div id="hola2" class="col-md-12 col-xs-1">
+    <div class="container">
+        <div class="row">
+            <div id="h" class="col-md-12 col-xs-1">
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <script type="text/javascript">
-            google.charts.load("current", {packages:["corechart"]});
-            google.charts.setOnLoadCallback(drawChart);
-            function drawChart() {
+                google.charts.load("current", {packages:['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+                function drawChart() {
                 var data = google.visualization.arrayToDataTable([
-                ['Materias', 'Progreso'],
-                
-                ['Materias cursando actualmente: {{$num2}}', {{$num2}}],
-                ['Materias por cursar {{56-$num}}',    {{56-$num}}- {{$num2}} ],
-                
-            
+                    ["Element", "", { role: "style" } ],
+                    ["Materias cursando actualmente", {{$num2}}, "#ffff4d"],
+                    ["Materias aprobadas", {{$num}}, "#0066ff"],
+                    ["Materias por cursar", {{56-$num}}, "color: #ff4d4d"],
+                    ["Total materias", 56, "#00b33c"],
                 ]);
+
+                var view = new google.visualization.DataView(data);
+                view.setColumns([0, 1,
+                                { calc: "stringify",
+                                    sourceColumn: 1,
+                                    type: "string",
+                                    role: "annotation" },
+                                2]);
+
                 var options = {
-                title: 'Materias Cursando',
-                is3D: true,
+                    title: "mi Progreso",
+                    width: 900,
+                    height: 500,
+                    bar: {groupWidth: "100%"},
+                    legend: { position: "none" },
                 };
-                var chart = new google.visualization.PieChart(document.getElementById('cursando'));
-                chart.draw(data, options);
+                var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+                chart.draw(view, options);
             }
             </script>
-            </head>
-            <body>
-            <div align="center" id="cursando"  style="width: 100%; height: 200%;"></div>
-            
-          </body>   
-            </div>
-        </div>
-        </div>
-    </div>  
-    
+            <div id="columnchart_values" style="width: 100%; height: 300px;"></div>
+             </div>     
+        </div>    
+    </div>
 
 
     @endsection
