@@ -160,4 +160,12 @@ $('#slideshow > div:first')
 -->
 <div class="espacio"><br><br></div>
 </body>   
+<!--/////////////////////////////NUEVA-->
+<footer style="color:#fff; font-size:14;">
+ 
+        <p align="center"> Benemérita Universidad Autónoma de Puebla <br>4 Sur 104 Cento Histórico C.P 72000 &nbsp&nbsp&nbsp&nbsp&nbsp&nbspTelefono +52(222) 2295500</p>
+        
+        
+      
+    </footer>
 </html>

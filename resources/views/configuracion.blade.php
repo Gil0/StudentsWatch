@@ -18,7 +18,7 @@ IMG.imagenUsuario{
 <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <div class="panel panel-default logindiv1">
+        <div class="panel panel-default">
             <div class="panel-heading labelmenu">Imagen de Perfil</div>
                 <div class="panel-body">              
                     <form id="editarImagen" class="form-horizontal" action="{{ url('/configuracion/'.encrypt($info->id).'/guardarImagen') }}" method="POST" enctype="multipart/form-data">                                                                           
@@ -88,7 +88,7 @@ IMG.imagenUsuario{
         </div>
     </div>                 
           <div class="col-sm-12">
-            <div class="panel panel-default logindiv4">
+            <div class="panel panel-default">
                 <div class="panel-heading labelmenu ">Información de Cuenta</div>
                   <div class="panel-body">                    
                     <!--
@@ -132,7 +132,7 @@ IMG.imagenUsuario{
     <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-default logindiv1">
+            <div class="panel panel-default">
                 <div class="panel-heading" style="text-align:center;">Cambiar Contraseña</div>
                     
             

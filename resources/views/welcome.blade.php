@@ -1,18 +1,17 @@
-
 <div class="fondo">
 
 
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" >
 @if(Auth::guest())
-<div class="row">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-default ">
-            <center><div class="panel-heading intro">Bienvenido</div></center>
-                <div class="panel-body ">
-                    <center>Hola Usuario no registrado.</center>
+<div class="row" >
+    <div class="">
+        <div class="">
+            <b><center><div class="panel-heading intro">Bienvenido</div></center></b>
+                <div class="panel-body  ">
+                    <center class="letra3" >Hola Usuario no registrado.</center>
                 </div>
             </div>
         </div>
@@ -26,14 +25,16 @@
 
 <!------ Slider ------------>
 <div id ="contenedor">
-	      	<ul><li><img src="../assets/img/3s.jpg" alt="" /></li>
-                <li><img src="../assets/img/6.jpg" alt="" /></li>
-                <li><img src="../assets/img/xx.jpg" alt="" /></li>
-               
-	                
-           </ul>
-    </div>
-         </div>
+<ul><li><img src="../assets/img/3s.jpg" alt="" /></li><!--800x426-->
+  <li><img src="../assets/img/mision4.png" alt="" /></li>
+  <li><img src="../assets/img/6.jpg" alt="" /></li>
+  <!--<li><img src="../assets/img/xx.jpg" alt="" /></li>-->
+  
+ 
+      
+</ul>
+</div>
+
          
   <!------End Slider ------------>    
 
@@ -51,6 +52,34 @@
                     </div>
                 </div>
         <!--FIN CUADROS-->
+
+        <!--información adicional-->
+        <br><br>
+        <div class="container" >
+
+<div class="row" >
+    <div class="">
+        <div >
+            
+            <div  align="justify"class=" panel-heading intro ">
+                <h1 class="letra3">StudentsWatch</h1>
+                <p>StudentsWatch es una aplicación BUAP que permite al alumno tener una mejor visión sobre las materias que puede tomar y con que profesor podra hacerlo, así como tambien ayuda al tutor a cargo del alumno a tener una mejor visión sobre como va el alumno y así
+                poder guiarlo en su proceso de aprendizaje</p>
+                <h2>¿De que forma StudentsWatch puede hacer eso?... </h2>
+                <p>El alumno podra calificar a diferentes profesores, estas calificacion y observaciones estaran a disposición de todos los alumnos y profesores.</p>
+                <p>Por parte del profesor tutorado se llevara un seguimiento del alumno, en el que se podra observar como va el alumno de acuerdo a los periodos que debería ir cursando</p>
+                <h2>¿Pero como puede el tutor dar seguimiento a traves de StudentsWatch?... </h2>
+                 <p>El profesor tutorado podra enviarle un correo al estudiante de acuerdo a su historial academico, a manera que el mismo tutor aconseje y oriente al alumno.</p>
+     
+            </div>
+           
+                
+            </div>
+        </div>
+    </div>
+    <!--linea dos de informacion-->
+    
+        <!--fin informacion adicional-->
 
   @else
     @if (Auth::user()->is_admin == true)
@@ -101,7 +130,8 @@
                 </div>
             </div>    
             @endif                                        
-        @else            
+        @else    
+                
             <div class="navar">
                 <ul class="nav nav-pills"> 
                     <li><a href="{{ url('/') }}">Inicio</a></li>
@@ -111,12 +141,17 @@
                     <li><a href="{{ url('/Admin/Materias') }}">Materias</a></li>
                  </ul>
             </div>
-            <div class="row intro logindiv1">
+            <div class="row intro logindiv ">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="panel panel-default">
+                        
                        <center> <div class="panel-heading">Bienvenido </div></center>
-                            <div class="panel-body">
+                            <div class="panel-body letra3">
+                            
                                <center> Hola Administrador.</center>
+                               <div class="container">
+                               <img class="imagenUsuario" src="../assets/img/admin.jpg" alt="Imagen Usuario">
+                               </div>
                             </div>
                         </div>
                     </div>
@@ -134,17 +169,22 @@
                     <li><a href="{{ url('/Profesor/MisComentarios/'.encrypt(Auth::user()->id)) }}">Mis Comentarios</a></li>                      
                  </ul>
             </div>
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Bienvenido</div>
-                            <div class="panel-body">
-                                Hola Tutor.
-                            </div>
+            <div class="row intro logindiv ">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                    
+                   <center> <div class="panel-heading">Bienvenido </div></center>
+                        <div class="panel-body letra3">
+                        
+                           <center> Hola Tutor.</center>
+                           <div class="container">
+                           <img class="imagenUsuario" src="../assets/img/admin.jpg" alt="Imagen Usuario">
+                           </div>
                         </div>
                     </div>
                 </div>
-            </div>                                                   
+            </div>
+        </div>                                                 
             @else            
             <div class="navar">
                 <ul class="nav nav-pills">
@@ -153,17 +193,22 @@
                     <li><a href="{{ url('/Profesor/MisComentarios/'.encrypt(Auth::user()->id)) }}">Mis Comentarios</a></li>                                                
                   </ul>
             </div>
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Bienvenido</div>
-                            <div class="panel-body">
-                                Hola Profesor :).
-                            </div>
+            <div class="row intro logindiv ">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                    
+                   <center> <div class="panel-heading">Bienvenido </div></center>
+                        <div class="panel-body letra3">
+                        
+                           <center> Hola Profesor.</center>
+                           <div class="container">
+                           <img class="imagenUsuario" src="../assets/img/admin.jpg" alt="Imagen Usuario">
+                           </div>
                         </div>
                     </div>
                 </div>
-            </div>                                              
+            </div>
+        </div>                                             
             @endif
         @else            
             <div class="navar">
@@ -176,17 +221,22 @@
                     <li><a href="{{ url('/Usuario/MiTutor/'.encrypt(Auth::user()->id)) }}">Mi Tutor</a></li>
                  </ul>
             </div>
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Bienvenido</div>
-                            <div class="panel-body">
-                                Hola Alumno, bienvenido...
-                            </div>
+            <div class="row intro logindiv ">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                    
+                   <center> <div class="panel-heading">Bienvenido </div></center>
+                        <div class="panel-body letra3">
+                        
+                           <center> Hola Alumno.</center>
+                           <div class="container">
+                           <img class="imagenUsuario" src="../assets/img/admin.jpg" alt="Imagen Usuario">
+                           </div>
                         </div>
                     </div>
                 </div>
-            </div>                                                       
+            </div>
+        </div>                                                   
         @endif                                        
     @endif 
 @endif       
